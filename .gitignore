@@ -1,0 +1,29 @@
+# Python
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.sqlite3
+*.log
+
+# Django
+*.db
+*.pot
+*.pyc
+*.mo
+*.migrations/
+
+# React / Vite
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+
+# Environment & Secrets
+.env
+.env.local
+
+# IDE/editor configs
+.vscode/
+.idea/
+*.swp
+.DS_Store

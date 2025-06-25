@@ -7,7 +7,7 @@ class RegisterSerializer(serializers.ModelSerializer):
     fields = [
       'username',
       'email',
-      'passowrd',
+      'password',
     ]
     extrakwargs = {'password':{'write-only': True}}
 

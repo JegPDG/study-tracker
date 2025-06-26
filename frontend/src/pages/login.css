@@ -1,0 +1,121 @@
+.login-body{
+  display: flex;
+}
+
+.left-side{
+  height: 100vh;
+  width: 50%;
+  background-color: var(--color-secondary);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: start;
+}
+
+.logo-name{
+  display: flex;
+  font-size: 1rem;
+  font-family: var(--big-fonts);
+  color: var(--color-primary);
+  margin-top: 150px;
+
+}
+
+
+.welcome-greet{
+  margin-top: 100px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.welcome-greet :nth-child(1){
+  font-family: var(--big-fonts);
+  font-size: 3rem;
+  color: var(--color-primary);
+}
+
+.welcome-greet :nth-child(2){
+  font-size: 1.5rem;
+  font-family: var(--small-fonts);
+  color: var(--color-primary);
+}
+
+/*RIGHT SIDE */
+.right-side{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 50%;
+}
+
+.login-message{
+  margin-top: 125px;
+  color: var(--color-tertiary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-message :nth-child(1){
+  font-size: 2.7rem;
+  font-family: var(--big-fonts);
+
+}
+
+.login-message :nth-child(2){
+  font-size: 1.2rem;
+  font-family: var(--small-fonts);
+
+}
+
+.login-form-cont{
+  margin-top: 24px;
+}
+
+.username{
+  font-family: var(--big-fonts);
+  color: var(--color-tertiary);
+}
+
+.password{
+  font-family: var(--big-fonts);
+  color: var(--color-tertiary);
+  margin-top: 24px;
+}
+
+.question{
+  margin-top: 24px;
+  color: var(--color-tertiary);
+}
+
+form{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.login-form-cont input{
+  width: 350px;
+  height: 35px;
+  background-color: var(--color-secondary);
+  color: var(--color-background);
+  padding-left: 10px;
+  border-style: none;
+  border-radius: var(--radius-md);
+}
+
+.login-form-cont button{
+  margin-top: 24px;
+  width: 130px;
+  height: 35px;
+  border-style: none;
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+  font-family: var(--big-fonts);
+  font-size: 1.2rem;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  cursor: pointer;
+}

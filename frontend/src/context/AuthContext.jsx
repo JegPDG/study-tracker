@@ -1,5 +1,5 @@
-import React, {createContext, useContext, useState} from "react";
-import api from '../api';
+import React, {createContext, useContext, useState, useEffect} from "react";
+import api from '../services/api';
 
 export const AuthContext = createContext();
 
@@ -12,7 +12,7 @@ export const AuthProvider = ({children}) => {
       const token = response.data.access;
       setAuthToken(token)
       localStorage.setItem('token', token)
-      api.default.headers.common['Authorization'] = `Bearer ${token}`;
+      api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
       return true;
     } catch (error){
       console.error('Login failed:', error);
@@ -23,7 +23,7 @@ export const AuthProvider = ({children}) => {
   const logoutUser = () => {
     setAuthToken(null);
     localStorage.removeItem('token');
-    delete api.default.headers.common['Authorization'];
+    delete api.defaults.headers.common['Authorization'];
 
   };
 
@@ -34,7 +34,7 @@ export const AuthProvider = ({children}) => {
   }, [authToken]);
 
    return (
-    <AuthContext.Provider value={{ authToken, loginUser, logoutUser }}>
+    <AuthContext.Provider value={{ authToken, loginUser, logoutUser}}>
       {children}
     </AuthContext.Provider>
   );

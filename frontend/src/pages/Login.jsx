@@ -2,6 +2,9 @@ import React, { useContext, useState, useNavigate } from 'react';
 import './login.css';
 import { AuthContext } from '../context/AuthContext';
 
+import glasses from '../assets/glasses-purple.svg';
+import bud from '../assets/bud.svg';
+
 const Login = () => {
   const {loginUser} = useContext(AuthContext);
   const [username, setUsername] = useState('');
@@ -21,6 +24,7 @@ const Login = () => {
     <>
     <div className='login-body'>
       <div className="left-side">
+        <img src={glasses} alt="" className="glasses" />
         <div className="logo-name">
           <p className="name">STUDBUD</p>
         </div>
@@ -32,6 +36,7 @@ const Login = () => {
       </div>
 
       <div className="right-side">
+        <img src={bud} alt="" className="bud" />
         <div className="login-message">
           <p>Welcome back!</p>
           <p>Log in to your account to continue.</p>

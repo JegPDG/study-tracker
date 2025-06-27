@@ -1,0 +1,16 @@
+.main-sidebar{
+  width: 240px;
+  background-color: var(--color-text-light);
+  height: 100vh;
+  padding: 20px;
+  font-family: "Roboto", sans-serif;
+  color: var(--color-secondary);
+  padding-top: 65px;
+
+}
+
+.side-bar-elements{
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}

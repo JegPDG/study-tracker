@@ -1,4 +1,5 @@
-import React, { useContext, useState, useNavigate } from 'react';
+import React, { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './login.css';
 import { AuthContext } from '../context/AuthContext';
 
@@ -9,13 +10,20 @@ const Login = () => {
   const {loginUser} = useContext(AuthContext);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate;
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("TRying to log in")
+
     const success = await loginUser(username, password);
-    if (success) navigate('/subjects');
-    else alert('Invalid credentials');
+
+    if (success){
+      console.log("Redirecting to the Subject page")
+      navigate('/subject');
+    } else {
+      console.log("Successfully logged in");
+    }
   };
   
   
@@ -43,7 +51,7 @@ const Login = () => {
         </div>
     
         <div className="login-form-cont">
-          <form action="handlesubmit">
+          <form onSubmit={handleSubmit}>
             <div className="username">
               <p>username</p>
               <input 

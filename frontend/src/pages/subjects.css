@@ -1,10 +1,13 @@
 .main-dash{
   display: flex;
   width: 100%;
+  position: relative;
+  flex-direction: column;
 }
 
-.dash-nav{
+.dash-side{
   width: 100%;
+  display: flex;
 }
 
 

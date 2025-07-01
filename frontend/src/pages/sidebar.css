@@ -1,6 +1,6 @@
 .main-sidebar{
   width: 240px;
-  background-color: var(--color-text-light);
+  background-color: var(--bg-lighter);
   height: 100vh;
   padding: 20px;
   font-family: "Roboto", sans-serif;

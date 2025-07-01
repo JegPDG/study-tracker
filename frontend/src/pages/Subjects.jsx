@@ -31,10 +31,10 @@ const Subjects= () => {
   return (
     <>
       <div className="main-dash">
-        <Sidebar></Sidebar>
-
-        <div className="dash-nav">
           <Navbar></Navbar>
+
+        <div className="dash-side">
+          <Sidebar></Sidebar>
           <div className="main-subjects-dash">
             <p className="subj-header">SUBJECTS</p>
             <div className="subject-list-cont">

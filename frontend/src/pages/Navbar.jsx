@@ -12,13 +12,16 @@ const Navbar = () => {
           <div className="nav-logo">
             <img src={logo_2} alt="" />
             <p>STUDBUD</p>
+
+            <div className="search">
+            <img src={search} alt="" />
+            <p>Search...</p>
+
+          </div>
+
           </div>
 
           <div className="search-menu">
-            <div className="search">
-              <img src={search} alt="" />
-              <p>Search...</p>
-            </div>
 
             <p className="username">
               jeggypaduga

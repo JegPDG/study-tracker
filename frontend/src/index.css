@@ -16,6 +16,13 @@
   --color-text-light: #98A6D4;
   --color-background: #D3FCD5;
 
+  /* NEW Colors */
+  --primary-green: #10B981;
+  --primary-purple: #7C3AED;
+  --bg-lighter: #F9FAFB;
+  --text-dark: #1F2937;
+  --bg-light: #EEEFF0;
+
   /* Spacing */
   --spacing-xs: 4px;
   --spacing-sm: 8px;
@@ -48,6 +55,6 @@ body {
   font-size: var(--font-size-base);
   line-height: var(--line-height-base);
   color: var(--color-text);
-  background-color: var(--color-background);
+  background-color: var(--bg-light);
   -webkit-font-smoothing: antialiased;
 }

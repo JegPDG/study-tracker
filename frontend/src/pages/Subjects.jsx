@@ -30,85 +30,81 @@ const Subjects= () => {
 
   return (
     <>
-      <div className="main-dash">
-          <Navbar></Navbar>
+      <div className="main-subjects-dash">
+        <div className="subject-section">
+          <p className="subj-header">SUBJECTS</p>
+          <div className="subject-list-cont">
+            <div className="subject-card">
+              <p className="subject-title">Title</p>
+              <div className="line"></div>
+              <p className="subject-description">
+                This is the sibject description of the subject.
+              </p>
 
-        <div className="dash-side">
-          <Sidebar></Sidebar>
-          <div className="main-subjects-dash">
-            <p className="subj-header">SUBJECTS</p>
-            <div className="subject-list-cont">
-              <div className="subject-card">
-                <p className="subject-title">Title</p>
-                <div className="line"></div>
-                <p className="subject-description">
-                  This is the sibject description of the subject.
-                </p>
-
-                <p className="note-head">NOTES</p>
-                <div className="line"></div>
-                <div className="notes-titles">
-                  <p>Note 1</p>
-                  <p>Note 2</p>
-                </div>
+              <p className="note-head">NOTES</p>
+              <div className="line"></div>
+              <div className="notes-titles">
+                <p>Note 1</p>
+                <p>Note 2</p>
               </div>
-
-              <div className="subject-card">
-                <p className="subject-title">Django REstFramework like bith</p>
-                <div className="line"></div>
-                <p className="subject-description">
-                  This is the sibject description of the subject. This is the sibject description of the subject.This is the sibject description of the subject.
-                </p>
-
-                <p className="note-head">NOTES</p>
-                <div className="line"></div>
-                <div className="notes-titles">
-                  <p>Note 1</p>
-                  <p>Note 2</p>
-                </div>
-              </div>
-
             </div>
 
-            <p className="subj-header">RECENT NOTES</p>
-            <div className="subject-list-cont">
-              <div className="subject-card">
-                <p className="subject-title">Title</p>
-                <div className="line"></div>
-                <p className="subject-description">
-                  This is the sibject description of the subject.
-                </p>
+            <div className="subject-card">
+              <p className="subject-title">Django REstFramework like bith</p>
+              <div className="line"></div>
+              <p className="subject-description">
+                This is the sibject description of the subject. This is the sibject description of the subject.This is the sibject description of the subject.
+              </p>
 
-                <p className="note-head">NOTES</p>
-                <div className="line"></div>
-                <div className="notes-titles">
-                  <p>Note 1</p>
-                  <p>Note 2</p>
-                </div>
+              <p className="note-head">NOTES</p>
+              <div className="line"></div>
+              <div className="notes-titles">
+                <p>Note 1</p>
+                <p>Note 2</p>
               </div>
-
-              <div className="subject-card">
-                <p className="subject-title">Django REstFramework like bith</p>
-                <div className="line"></div>
-                <p className="subject-description">
-                  This is the sibject description of the subject. This is the sibject description of the subject.This is the sibject description of the subject.
-                </p>
-
-                <p className="note-head">NOTES</p>
-                <div className="line"></div>
-                <div className="notes-titles">
-                  <p>Note 1</p>
-                  <p>Note 2</p>
-                </div>
-              </div>
-
             </div>
-
 
           </div>
         </div>
-      </div>
 
+        <div className="subject-section">
+          <p className="subj-header">RECENT NOTES</p>
+          <div className="subject-list-cont">
+            <div className="subject-card">
+              <p className="subject-title">Title</p>
+              <div className="line"></div>
+              <p className="subject-description">
+                This is the sibject description of the subject.
+              </p>
+
+              <p className="note-head">NOTES</p>
+              <div className="line"></div>
+              <div className="notes-titles">
+                <p>Note 1</p>
+                <p>Note 2</p>
+              </div>
+            </div>
+
+            <div className="subject-card">
+              <p className="subject-title">Django REstFramework like bith</p>
+              <div className="line"></div>
+              <p className="subject-description">
+                This is the sibject description of the subject. This is the sibject description of the subject.This is the sibject description of the subject.
+              </p>
+
+              <p className="note-head">NOTES</p>
+              <div className="line"></div>
+              <div className="notes-titles">
+                <p>Note 1</p>
+                <p>Note 2</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+      </div>
     </>  
 
 

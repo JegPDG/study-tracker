@@ -23,6 +23,14 @@
   --text-dark: #1F2937;
   --bg-light: #EEEFF0;
 
+  /* NEW Colors */
+  --pastel-pink: #FFF0FA;
+  --lavender: #F8F0FF;
+  --peach: #FFF4F0;
+  --mint: #FFF4F0;
+  --sky-blue: #F0F9FF;
+
+
   /* Spacing */
   --spacing-xs: 4px;
   --spacing-sm: 8px;

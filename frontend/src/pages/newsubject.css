@@ -1,0 +1,15 @@
+.main-new-subject{
+  padding: 0 50px;
+  width: 100%;
+}
+
+.new-subject-page{
+  background-color: var(--bg-lighter);
+  width: 100%;
+  margin-top: 20px;
+  /* height: 400px; */
+  padding: 20px 40px 40px 40px;
+  border-radius: var(--radius-lg);
+
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 4px 0px inset;
+}

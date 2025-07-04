@@ -21,6 +21,7 @@
   color: var(--color-primary);
   font-family: var(--big-fonts);
   font-size: 1.2rem;
+  width: 1000px;
 }
 
 .navbar-main .search-menu{
@@ -37,9 +38,9 @@
   border-radius: var(--radius-md);
   padding: 0 10px;
   width: 400px;
+  margin-left: 100px;
   gap: 10px;
   color: var(--color-text-light);
-  margin-left: 100px;
   font-family: var(--roboto);
   font-size: 1rem;
 

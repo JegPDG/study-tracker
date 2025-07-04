@@ -1,4 +1,5 @@
 GET http://127.0.0.1:8000/api/subject/ HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUxNjM4MjExLCJpYXQiOjE3NTE2Mzc5MTEsImp0aSI6IjFjYWM0OGUyMzM4NTQyYWI5MDQyNmQ2NDQ1MDRkMDkwIiwidXNlcl9pZCI6MX0.u01CVjb_3pnA11jJgn4kO6LE3dvrdxq_tCPy3ZHC3NQ
 
 ###
 POST http://127.0.0.1:8000/api/token/ HTTP/1.1
@@ -7,4 +8,14 @@ Content-Type: application/json
 {
   "username" : "Brent",
   "password" : "pogi"
+}
+
+###
+POST http://127.0.0.1:8000/api/subject/ HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUxNjQxMzA1LCJpYXQiOjE3NTE2NDEwMDUsImp0aSI6IjQ0YWY1MGJiNjQ4OTRkYzY5NWViMTdkMGE2ZTUwOTYzIiwidXNlcl9pZCI6MX0.W5poyERMqaY91RgWUV86GVQ9kIjg6v7tv3FItKFASZo
+Content-Type: application/json
+
+{
+  "title" : "Science",
+  "content" : "Science is a systematic endeavor that builds and organizes knowledge in the form of testable explanations and predictions about the universe."
 }

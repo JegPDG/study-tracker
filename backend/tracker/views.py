@@ -14,6 +14,7 @@ class SubjectsViewSet(viewsets.ModelViewSet):
   queryset = Subject.objects.none()
   serializer_class = SubjectSerializer
   permission_classes = [permissions.IsAuthenticated]
+  lookup_field = 'id'
 
   def get_queryset(self):
     return self.request.user.subjects.all()
@@ -26,6 +27,7 @@ class NotesViewSet(viewsets.ModelViewSet):
   queryset = Notes.objects.none()
   serializer_class = NoteSerializer
   permission_classes = [permissions.IsAuthenticated]
+  lookup_field = 'id'
 
   def get_queryset(self):
     return Notes.objects.filter(subject__user=self.request.user)

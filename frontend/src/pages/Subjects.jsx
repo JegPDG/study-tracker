@@ -34,36 +34,31 @@ const Subjects= () => {
         <div className="subject-section">
           <p className="subj-header">SUBJECTS</p>
           <div className="subject-list-cont">
-            <div className="subject-card">
-              <p className="subject-title">Title</p>
-              <div className="line"></div>
-              <p className="subject-description">
-                This is the sibject description of the subject.
-              </p>
+            <ul>
+              {subjects.map((subject) => 
+                <li key={subject.id}>
+                  <div className="subject-card">
+                    <p className="subject-title">{subject.name}</p>
+                    <div className="line"></div>
+                    <p className="subject-description">
+                      {subject.description}
+                    </p>
 
-              <p className="note-head">NOTES</p>
-              <div className="line"></div>
-              <div className="notes-titles">
-                <p>Note 1</p>
-                <p>Note 2</p>
-              </div>
-            </div>
-
-            <div className="subject-card">
-              <p className="subject-title">Django REstFramework like bith</p>
-              <div className="line"></div>
-              <p className="subject-description">
-                This is the sibject description of the subject. This is the sibject description of the subject.This is the sibject description of the subject.
-              </p>
-
-              <p className="note-head">NOTES</p>
-              <div className="line"></div>
-              <div className="notes-titles">
-                <p>Note 1</p>
-                <p>Note 2</p>
-              </div>
-            </div>
-
+                    <p className="note-head">NOTES</p>
+                    <div className="line"></div>
+                    <div className="notes-titles">
+                        <ul>
+                          {subject.notes.map((note, i) => 
+                            <li key={note.id}>
+                               <p>{note.title}</p> 
+                            </li>
+                          )}
+                        </ul>
+                    </div>
+                  </div>
+                </li>
+              )}
+            </ul>
           </div>
         </div>
 

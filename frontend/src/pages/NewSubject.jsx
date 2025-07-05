@@ -5,8 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import api from '../services/api';
 
 const NewSubject = () => {
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
   const {authToken} = useContext(AuthContext)
   const navigate = useNavigate();
 
@@ -14,8 +14,7 @@ const NewSubject = () => {
     e.preventDefault();
     try {
       await api.post('subject/', 
-        { "title": title,
-          "content": content },
+        { name, description },
         {
           headers: {
             Authorization: `Bearer ${authToken}`,
@@ -25,7 +24,7 @@ const NewSubject = () => {
       console.log('Subject created')
       navigate('/subject')
     } catch (error) {
-      console.log(error)
+      console.log(error.response?.data)
       console.log('error in creating subject')
     }
 
@@ -42,7 +41,7 @@ const NewSubject = () => {
             <input className="input-title-card"
                   placeholder='New Subject title'
                   type='text'
-                  onChange={(e) => setTitle(e.target.value)}
+                  onChange={(e) => setName(e.target.value)}
                   >
             </input>
 
@@ -50,7 +49,7 @@ const NewSubject = () => {
             <input className="input-description-card"
                   placeholder='Description'
                   type='text'
-                  onChange={(e) => setContent(e.target.value)}
+                  onChange={(e) => setDescription(e.target.value)}
 
               >
             </input>

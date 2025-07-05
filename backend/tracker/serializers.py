@@ -11,6 +11,7 @@ class NoteSerializer(serializers.ModelSerializer):
       'created_at',
       'updated_at',
     ]
+    read_only_fields = ['id']
 
 class SubjectSerializer(serializers.ModelSerializer):
   notes = NoteSerializer(many=True, read_only=True)
@@ -24,4 +25,5 @@ class SubjectSerializer(serializers.ModelSerializer):
       'created_at',
       'notes'
     ]
+    read_only_fields = ['user']
 

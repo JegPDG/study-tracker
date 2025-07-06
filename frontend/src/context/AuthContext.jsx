@@ -5,12 +5,17 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({children}) => {
   const [authToken, setAuthToken] = useState(localStorage.getItem('token'));
+  const [authRefresh, setRefresh] = useState(localStorage.getItem('refresh'))
 
   const loginUser = async(username, password) => {
     try {
       const response = await api.post('auth/login/', {username, password});
       const token = response.data.access;
+      const refresh = response.data.refresh
+      console.log(response.data)
       setAuthToken(token)
+      setRefresh(refresh)
+      localStorage.setItem('refresh', refresh)
       localStorage.setItem('token', token)
       api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
       return true;

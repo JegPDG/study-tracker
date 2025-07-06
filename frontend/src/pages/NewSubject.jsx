@@ -14,12 +14,7 @@ const NewSubject = () => {
     e.preventDefault();
     try {
       await api.post('subject/', 
-        { name, description },
-        {
-          headers: {
-            Authorization: `Bearer ${authToken}`,
-          },
-        }
+        { name, description } 
       )
       console.log('Subject created')
       navigate('/subject')

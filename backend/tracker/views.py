@@ -13,7 +13,7 @@ def index(request):
 class SubjectsViewSet(viewsets.ModelViewSet):
   queryset = Subject.objects.none()
   serializer_class = SubjectSerializer
-  permission_classes = [permissions.IsAuthenticated]
+  # permission_classes = [permissions.IsAuthenticated]
   lookup_field = 'id'
 
   def get_queryset(self):
@@ -26,7 +26,7 @@ class SubjectsViewSet(viewsets.ModelViewSet):
 class NotesViewSet(viewsets.ModelViewSet):
   queryset = Notes.objects.none()
   serializer_class = NoteSerializer
-  permission_classes = [permissions.IsAuthenticated]
+  # permission_classes = [permissions.IsAuthenticated]
   lookup_field = 'id'
 
   def get_queryset(self):

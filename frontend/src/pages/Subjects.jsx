@@ -62,43 +62,6 @@ const Subjects= () => {
           </div>
         </div>
 
-        <div className="subject-section">
-          <p className="subj-header">RECENT NOTES</p>
-          <div className="subject-list-cont">
-            <div className="subject-card">
-              <p className="subject-title">Title</p>
-              <div className="line"></div>
-              <p className="subject-description">
-                This is the sibject description of the subject.
-              </p>
-
-              <p className="note-head">NOTES</p>
-              <div className="line"></div>
-              <div className="notes-titles">
-                <p>Note 1</p>
-                <p>Note 2</p>
-              </div>
-            </div>
-
-            <div className="subject-card">
-              <p className="subject-title">Django REstFramework like bith</p>
-              <div className="line"></div>
-              <p className="subject-description">
-                This is the sibject description of the subject. This is the sibject description of the subject.This is the sibject description of the subject.
-              </p>
-
-              <p className="note-head">NOTES</p>
-              <div className="line"></div>
-              <div className="notes-titles">
-                <p>Note 1</p>
-                <p>Note 2</p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-
       </div>
     </>  
 

@@ -8,15 +8,21 @@ import notes from '../assets/notes.svg';
 import bookmarks from '../assets/bookmarks.svg';
 import flashcard from '../assets/flashcard.svg';
 import ai from '../assets/ai.svg';
+import { useNavigate } from 'react-router-dom';
 
 
 const Sidebar = () => {
+  const navigate = useNavigate();
+
   const sidebartext = [
     {text: 'Dashboard',
       icon: dashboard,
     }, 
     {text: 'Subjects',
-      icon: subject
+      icon: subject,
+      goto: () => {
+        navigate('/subject')
+      },
     },
     {text: 'Notes',
       icon: notes
@@ -39,10 +45,15 @@ const Sidebar = () => {
        
        <ul className='side-bar-elements'>
         {sidebartext.map((sideEl, index) => 
-          <li key={index}>
-            <link rel="stylesheet" href="" />
-            <img src={sideEl.icon} alt="" />
-            <p>{sideEl.text}</p>  
+          <li  key={index}>
+            <div onClick={ () => {
+               sideEl.goto();
+              }
+            }>
+              {/* <link rel="stylesheet" href="" /> */}
+              <img src={sideEl.icon} alt="" />
+              <p>{sideEl.text}</p>  
+            </div>
           </li>
           )}
       </ul>

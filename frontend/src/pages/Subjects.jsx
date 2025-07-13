@@ -4,11 +4,16 @@ import {AuthContext} from '../context/AuthContext';
 import './subjects.css'
 import Sidebar from './Sidebar';
 import Navbar from './Navbar';
+import { useNavigate } from 'react-router-dom';
 
 const Subjects= () => {
   const {authToken} = useContext(AuthContext);
   const [subjects, setSubjects] = useState([]);
+  const navigate = useNavigate();
 
+  // const navigateTo = (num) => {
+  //   navigate(`/${num}`);
+  // }
 
   useEffect( () => {
     const getSubjects = async () => {
@@ -37,7 +42,8 @@ const Subjects= () => {
             <ul>
               {subjects.map((subject) => 
                 <li key={subject.id}>
-                  <div className="subject-card">
+                  <div 
+                  className="subject-card">
                     <p className="subject-title">{subject.name}</p>
                     <div className="line"></div>
                     <p className="subject-description">

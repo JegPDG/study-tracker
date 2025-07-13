@@ -1,46 +1,53 @@
-.main-dash{
+.subject-detail{
   display: flex;
   width: 100%;
   position: relative;
   flex-direction: column;
+  padding: 20px;
 }
 
-.dash-side{
-  width: 100%;
-  display: flex;
-}
-
-
-.main-subjects-dash{
-  padding: 0 50px;
-  width: 100%;
-}
-
-.subject-section{
+.subject-container{
   background-color: var(--bg-lighter);
   width: 100%;
-  margin-top: 20px;
-  /* height: 400px; */
+  min-height: 500px;
   padding: 20px 40px 40px 40px;
   border-radius: var(--radius-lg);
 
   box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 4px 0px inset;
 }
 
-.subj-header{
-  font-size: 2rem;
-  font-family: var(--big-fonts);
-  color: var(--color-tertiary);
-
+.view-indicator{
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.4);
 }
 
-.subject-list-cont ul{
+.subject-container h1{
+  font-family: var(--big-fonts);
+  color: var(--color-tertiary);
+}
+
+.subject-container h2{
+  font-family: var(--big-fonts);
+  color: var(--color-tertiary);
+  margin-top: 20px;
+}
+
+.note-views{
+  display: flex;
+  gap: 20px;
+  font-size: 14px;
+  padding-left: 20px;
+  
+}
+
+.notes-container ul{
   display: flex;
   gap: 20px;
   list-style: none;
+  margin-top: 20px;
 }
 
-.subject-card{
+.note-card{
   width: 250px;
   height: 300px;
   background-color: var(--mint);
@@ -53,11 +60,11 @@
   transition: transform 0.3s ease;
 }
 
-.subject-card:hover{
+.note-card:hover{
   transform: scale(1.1);
 }
 
-.subject-card .subject-title{
+.note-title{
   font-family: var(--big-fonts);
   font-size: 1.5rem;
   line-height: 30px;
@@ -69,35 +76,14 @@
   text-overflow: ellipsis;
 }
 
-.subject-card .subject-description{
+.note-content{
   font-family: var(--roboto);
   font-size: 0.8rem;
   margin-top: 10px;
 
   display: -webkit-box;
-  -webkit-line-clamp: 3;  /* Number of lines */
+  -webkit-line-clamp: 6;  /* Number of lines */
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
-.subject-card .note-head{
-  margin-top: 10px;
-  font-size: 0.9rem;
-  font-family: var(--roboto);
-  font-weight: bold;
-}
-
-.subject-card .notes-titles{
-  font-family: var(--roboto);
-  font-size: 0.8rem;
-  margin-top: 10px;
-}
-
-.line{
-  width: 60px;
-  height: 2.5px;
-  background-color: white;
-  border-radius: 5px;
-}
-

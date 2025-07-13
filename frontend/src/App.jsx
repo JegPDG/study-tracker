@@ -9,9 +9,10 @@ import Sidebar from './pages/Sidebar'
 import Navbar from './pages/Navbar'
 import NewSubject from './pages/NewSubject';
 import Layout from './pages/Layout';
+import SpecificSub from './pages/SpecificSub';
 
 function App() {
-  const [count, setCount] = useState(0)
+  
 
   return (
     <>
@@ -22,6 +23,7 @@ function App() {
           <Route element={<Layout></Layout>}> 
             <Route path='/subject' element={<Subjects></Subjects>}></Route>
             <Route path='/subject/new' element={<NewSubject></NewSubject>}></Route>
+            <Route path='/subject/:id' element={<SpecificSub></SpecificSub>}></Route>
           </Route>
         </Routes>
       </Router>

@@ -32,6 +32,11 @@
   margin-top: 20px;
 }
 
+.function-container{
+  margin: 10px 0;
+
+}
+
 .note-views{
   display: flex;
   gap: 20px;

@@ -25,7 +25,10 @@ const Sidebar = () => {
       },
     },
     {text: 'Notes',
-      icon: notes
+      icon: notes,
+      goto: () => {
+        navigate('/note')
+      },
     },
     {text: 'Bookmarks',
       icon: bookmarks

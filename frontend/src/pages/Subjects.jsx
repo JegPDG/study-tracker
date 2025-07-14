@@ -43,6 +43,10 @@ const Subjects= () => {
               {subjects.map((subject) => 
                 <li key={subject.id}>
                   <div 
+                  onClick={() => {
+                    console.log(subject)
+                    navigate(`/subject/${subject.id}`);
+                  }}
                   className="subject-card">
                     <p className="subject-title">{subject.name}</p>
                     <div className="line"></div>

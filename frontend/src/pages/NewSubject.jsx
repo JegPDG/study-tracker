@@ -48,7 +48,7 @@ const NewSubject = () => {
 
               >
             </input>
-
+            
             <div className="but-cont">
               <button type='submit'>Save Subject</button>
             </div>

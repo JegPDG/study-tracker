@@ -10,6 +10,7 @@ import Navbar from './pages/Navbar'
 import NewSubject from './pages/NewSubject';
 import Layout from './pages/Layout';
 import SpecificSub from './pages/SpecificSub';
+import NewNote from './pages/NewNote';
 
 function App() {
   
@@ -24,6 +25,7 @@ function App() {
             <Route path='/subject' element={<Subjects></Subjects>}></Route>
             <Route path='/subject/new' element={<NewSubject></NewSubject>}></Route>
             <Route path='/subject/:id' element={<SpecificSub></SpecificSub>}></Route>
+            <Route path='/subject/:id/newnote' element={<NewNote></NewNote>}></Route>
           </Route>
         </Routes>
       </Router>

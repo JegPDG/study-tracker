@@ -4,13 +4,7 @@ from rest_framework import serializers
 class NoteSerializer(serializers.ModelSerializer):
   class Meta:
     model = Notes
-    fields = [
-      'subject',
-      'title',
-      'content',
-      'created_at',
-      'updated_at',
-    ]
+    fields = '__all__'
     read_only_fields = ['id']
 
 class SubjectSerializer(serializers.ModelSerializer):
@@ -18,12 +12,6 @@ class SubjectSerializer(serializers.ModelSerializer):
   
   class Meta:
     model = Subject
-    fields = [
-      'name',
-      'description',
-      'user',
-      'created_at',
-      'notes'
-    ]
+    fields = '__all__'
     read_only_fields = ['user']
 

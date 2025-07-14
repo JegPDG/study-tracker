@@ -24,6 +24,7 @@
   padding: 20px 40px 40px 40px;
   border-radius: var(--radius-lg);
 
+
   box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 4px 0px inset;
 }
 
@@ -38,6 +39,7 @@
   display: flex;
   gap: 20px;
   list-style: none;
+  flex-wrap: wrap;
 }
 
 .subject-card{
@@ -92,6 +94,13 @@
   font-family: var(--roboto);
   font-size: 0.8rem;
   margin-top: 10px;
+}
+
+.subject-card .notes-titles ul{
+  display: flex;
+  flex-direction: column;
+  row-gap: 0;
+  overflow: hidden;
 }
 
 .line{

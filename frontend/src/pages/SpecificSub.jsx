@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import './specifisub.css'
 import api from '../services/api'
 import { AuthContext } from '../context/AuthContext'
+import { Link } from 'react-router-dom'
 
 const SpecificSub = () => {
   let { id } = useParams();
@@ -50,6 +51,12 @@ const SpecificSub = () => {
           </p>
           
           <h2>Notes</h2>
+          <div className="function-container">
+            <Link  to={`/subject/${subject.id}/newnote`}>
+              <button>Create New Note</button>
+            </Link>
+          </div>
+
           <div className='note-views'>
             <p>Recently Added </p>
             <p>Recently Viewed </p>

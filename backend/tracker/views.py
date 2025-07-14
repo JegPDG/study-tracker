@@ -33,7 +33,8 @@ class NotesViewSet(viewsets.ModelViewSet):
     return Notes.objects.filter(subject__user=self.request.user)
   
   def perform_create(self, serializer):
-    serializer.save()
+    subject_id = self.request.data.get('subject')
+    serializer.save(subject_id=subject_id)
 
 
 

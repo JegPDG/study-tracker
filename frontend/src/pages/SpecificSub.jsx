@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import './specifisub.css'
 import api from '../services/api'
 import { AuthContext } from '../context/AuthContext'
@@ -8,7 +8,8 @@ import { Link } from 'react-router-dom'
 const SpecificSub = () => {
   let { id } = useParams();
   const [subject, setSubject] = useState([]);
-  const {authtoken} = useContext(AuthContext)
+  const {authtoken} = useContext(AuthContext);
+  const navigate = useNavigate();
 
   useEffect(
     () => {
@@ -65,10 +66,14 @@ const SpecificSub = () => {
             <ul>
               {subject?.notes?.map((note, i) => 
                 <li key={note.id}>
-                  <div className="note-card">
-                    <p className='note-title'>{note.title}</p> 
-                    <p className='note-content'>{note.content}</p>
-                  </div>
+                    <div 
+                      onClick={ () => {
+                        navigate(`/note/${note.id}`)
+                      }}
+                      className="note-card">
+                      <p className='note-title'>{note.title}</p> 
+                      <p className='note-content'>{note.content}</p>
+                    </div>
                 </li>
               )}
             </ul>

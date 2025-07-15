@@ -14,7 +14,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("TRying to log in")
+    console.log("Trying to log in")
 
     const success = await loginUser(username, password);
 
@@ -22,7 +22,7 @@ const Login = () => {
       console.log("Redirecting to the Subject page")
       navigate('/subject');
     } else {
-      console.log("Successfully logged in");
+      console.log("Log in failed");
     }
   };
   

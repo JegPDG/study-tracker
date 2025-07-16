@@ -38,6 +38,13 @@ const Subjects= () => {
       <div className="main-subjects-dash">
         <div className="subject-section">
           <p className="subj-header">SUBJECTS</p>
+
+          <div className="function-containers">
+            <button 
+              onClick={ () => navigate('/subject/new')}
+            >Add Subject</button>
+          </div>
+
           <div className="subject-list-cont">
             <ul>
               {subjects.map((subject) => 

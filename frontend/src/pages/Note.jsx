@@ -44,6 +44,19 @@ const Note = () => {
                 navigate(`/note/${id}/edit`)
               }}
             >Edit</button>
+
+            <button
+              onClick={ async () => {
+                if(window.confirm('Do you want to delete the subject?')){
+                  await api.delete(`/note/${id}`)
+                  navigate('/subject')
+                  console.log('Subject deleted')
+                } else{
+                  alert("Subject not deleted")
+                }
+              }}
+            
+            >Delete</button>
           </div>
 
 

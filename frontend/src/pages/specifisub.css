@@ -92,3 +92,15 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.function-container button{
+  height: 30px;
+  box-sizing: border-box;
+  padding: 0 10px;
+  font-family: var(--roboto);
+  font-weight: bold;
+  border-radius: 15px;
+  border: 2px solid var(--color-tertiary) ;
+  cursor: pointer;
+
+}

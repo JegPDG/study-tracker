@@ -45,6 +45,22 @@ const SpecificSub = () => {
     <>
       <div className="subject-detail">
         <div className="subject-container">
+          <button
+            className='delete-button'
+            onClick={ async () => {
+              if(window.confirm("Do you want to delete this Subject?")){
+                try {
+                  await api.delete(`/subject/${id}/`)
+                  console.log('Deleted the subject')
+                  navigate('/subject/')
+                } catch (error) {
+                  console.log("Unable to delete subject", error.text)
+                }
+              } else{
+                alert("Did not delete the subject")
+              }
+            }}
+            >Delete</button>
           <p className='view-indicator'>Notebook</p>
           <h1>{subject?.name}</h1>
           <p>
@@ -56,6 +72,7 @@ const SpecificSub = () => {
             <Link  to={`/subject/${subject.id}/newnote`}>
               <button>Create New Note</button>
             </Link>
+
           </div>
 
           <div className='note-views'>

@@ -7,6 +7,7 @@ import api from '../services/api'
 const EditNote = () => {
   const {id} = useParams();
   const [note, setNote] = useState({ title: '', content: ''});
+  const [othernote, setOthernote] = useState(null)
   const navigate = useNavigate();
  
   useEffect(() => {
@@ -17,6 +18,8 @@ const EditNote = () => {
           title: response.data.title || '',
           content: response.data.content || '',
         })
+        setOthernote(response.data)
+        console.log(othernote)
         
       } catch (error) {
         console.log('Unable to fetch Note', error.text)
@@ -62,8 +65,8 @@ const EditNote = () => {
     <>
       <div className="new-note-main">
         <div className="newnote-container">
-          <p className='note-subject-relate'> Subject title</p>
-          <p className='note-created'> 00/00/00</p>
+          <p className='note-subject-relate'> {othernote?.subject.name}</p>
+          <p className='note-created'> {othernote?.updated_at}</p>
 
           <form 
             className='new-note-form' 

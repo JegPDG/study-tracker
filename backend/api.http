@@ -20,3 +20,15 @@ Content-Type: application/json
   "description" : "Science is a systematic endeavor that builds and organizes knowledge in the form of testable explanations and predictions about the universe.",
   "user": 1
 }
+
+###
+POST http://127.0.0.1:8000/api/note/ HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUyOTI1ODI4LCJpYXQiOjE3NTI5MjU1MjgsImp0aSI6IjlmNmI1NzM1MGY2YTQ5YmViNTRlNTJmYzJiN2EzZDhhIiwidXNlcl9pZCI6MX0._XKXyjpbtkVEbqwBgISMzxeY8FmSO9YjNps1ILVDGQ4
+Content-Type: application/json
+
+{
+  "title" : "Science",
+  "content" : "ocntent",
+  "subject_id": [2],
+  "user": 1
+}

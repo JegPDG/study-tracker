@@ -21,7 +21,7 @@ const NewNote = () => {
         '/note/', 
         { title, 
           content,
-          subject: id,
+          subject_id: parseInt(id),
         },
       );
 

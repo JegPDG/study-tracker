@@ -15,6 +15,7 @@ const Note = () => {
     try {
       const response = await api.get(`note/${id}`)
       setNote(response.data)
+      console.log("Note api", response.data)
 
     } catch (error) {
       console.log('Error in getting note', error.text)
@@ -32,8 +33,8 @@ const Note = () => {
     <>
       <div className="new-note-main">
         <div className="newnote-container">
-          <p className='note-subject-relate'></p>
-          <p className='note-created'> 00/00/00</p>
+          <p className='note-subject-relate'>{note?.subject.name}</p>
+          <p className='note-created'>{note?.updated_at}</p>
           
           <h1 className='note-title-h1'>{note?.title}</h1>
 
@@ -48,9 +49,14 @@ const Note = () => {
             <button
               onClick={ async () => {
                 if(window.confirm('Do you want to delete the subject?')){
-                  await api.delete(`/note/${id}`)
-                  navigate('/subject')
+                 try {
+                  await api.delete(`/note/${id}/`)
+                  navigate(`/subject/${note.subject.id}`)
                   console.log('Subject deleted')
+                 } catch (error) {
+                    console.log('Unable to delete', error.text)
+                 }
+                  
                 } else{
                   alert("Subject not deleted")
                 }

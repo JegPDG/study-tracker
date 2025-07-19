@@ -12,8 +12,27 @@
   min-height: 500px;
   padding: 20px 40px 40px 40px;
   border-radius: var(--radius-lg);
+  position: relative;
 
   box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 4px 0px inset;
+}
+
+.delete-button{
+  position: absolute;
+  right: 20px;
+  height: 30px;
+  padding: 0 20px;
+  background-color: rgb(241, 162, 162);
+  border: 2px solid rgb(206, 70, 70);
+  border-radius: 15px;
+  font-family: var(--roboto);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.delete-button:hover{
+  background-color: rgb(227, 131, 131);
 }
 
 .view-indicator{

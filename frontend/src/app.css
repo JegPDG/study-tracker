@@ -6,3 +6,27 @@
 .dash-nav{
   width: 100%;
 }
+
+.back-arrow{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border-style: none;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+.back-arrow:hover{
+  background-color: rgb(232, 230, 230);
+}
+
+.top-controls{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}

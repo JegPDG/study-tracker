@@ -6,6 +6,7 @@ import api from '../services/api'
 
 const NewNote = () => {
   const {authToken} = useContext(AuthContext);
+  const [subject, setSubject] = useState(null);
   const [newNote, setNewNote] = useState(null);
   const navigate = useNavigate();
   const {id} = useParams();
@@ -29,16 +30,27 @@ const NewNote = () => {
     } catch (error) {
       console.log('Failed in saving the New Note', error.text)
     }
-
-
   }
+
+  useEffect(() => {
+    const getSubject = async ( ) => {
+      try {
+        const response = await api.get(`/subject/${id}`)
+        setSubject(response.data)
+      } catch (error) {
+        console.log("Failed to fetch subject")
+      }
+    }
+
+    getSubject();
+    
+  }, [id])
  
   return (
     <>
       <div className="new-note-main">
         <div className="newnote-container">
-          <p className='note-subject-relate'> Subject title</p>
-          <p className='note-created'> 00/00/00</p>
+          <div className="note-subject-relate">{subject?.name}</div>
 
           <form 
             className='new-note-form' 

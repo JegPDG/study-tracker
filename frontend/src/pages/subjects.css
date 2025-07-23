@@ -3,6 +3,7 @@
   width: 100%;
   position: relative;
   flex-direction: column;
+  
 }
 
 .dash-side{
@@ -26,10 +27,11 @@
 
 
   box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 4px 0px inset;
+
 }
 
 .subj-header{
-  font-size: 2rem;
+  font-size: 3rem;
   font-family: var(--big-fonts);
   color: var(--color-tertiary);
 

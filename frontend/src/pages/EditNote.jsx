@@ -3,6 +3,9 @@ import './newnote.css'
 import { useNavigate, useParams } from 'react-router-dom'
 import api from '../services/api'
 
+import arrowback from '../assets/back-arrow.svg'
+
+
 
 const EditNote = () => {
   const {id} = useParams();

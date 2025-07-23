@@ -3,6 +3,9 @@ import './newnote.css'
 import api from '../services/api'
 import { useNavigate, useParams } from 'react-router-dom'
 
+import arrowback from '../assets/back-arrow.svg'
+
+
 
 
 const Note = () => {
@@ -33,6 +36,14 @@ const Note = () => {
     <>
       <div className="new-note-main">
         <div className="newnote-container">
+          <div className="top-controls">
+            <button className='back-arrow'
+              onClick={() => navigate(-1)}
+              >
+              <img src={arrowback} alt="" />
+            </button>
+          </div>
+
           <p className='note-subject-relate'>{note?.subject.name}</p>
           <p className='note-created'>{note?.updated_at}</p>
           

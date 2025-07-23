@@ -4,6 +4,9 @@ import { AuthContext } from '../context/AuthContext'
 import { useNavigate, useParams } from 'react-router-dom';
 import api from '../services/api'
 
+import arrowback from '../assets/back-arrow.svg'
+
+
 const NewNote = () => {
   const {authToken} = useContext(AuthContext);
   const [subject, setSubject] = useState(null);
@@ -50,6 +53,14 @@ const NewNote = () => {
     <>
       <div className="new-note-main">
         <div className="newnote-container">
+          <div className="top-controls">
+            <button className='back-arrow'
+              onClick={() => navigate(-1)}
+              >
+              <img src={arrowback} alt="" />
+            </button>
+          </div>
+          
           <div className="note-subject-relate">{subject?.name}</div>
 
           <form 

@@ -48,7 +48,9 @@ const SpecificSub = () => {
       <div className="subject-detail">
         <div className="subject-container">
           <div className="top-controls">
-            <button className='back-arrow'>
+            <button className='back-arrow'
+              onClick={() => navigate(-1)}
+              >
               <img src={arrowback} alt="" />
             </button>
 

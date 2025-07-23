@@ -3,14 +3,18 @@
   width: 100%;
   position: relative;
   flex-direction: column;
+  height: 100vh;
+
 }
 
 .main-content{
   width: 100%;
   display: flex;
+  overflow: hidden;
 }
 
 .page-content{
   width: 100%;
+  overflow-y: scroll;
 }
 

@@ -110,7 +110,7 @@
 .line{
   width: 60px;
   height: 2.5px;
-  background-color: white;
+  background-color: var(--text-dark);
   border-radius: 5px;
 }
 

@@ -12,17 +12,23 @@ const SpecificSub = () => {
   const [subject, setSubject] = useState([]);
   const {authtoken} = useContext(AuthContext);
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false)
 
   useEffect(
     () => {
       const getSubjDetail = async () => {
         try {
+          setLoading(true)
           const response = await api.get(`/subject/${id}`)
           setSubject(response.data)
           console.log(response.data)
 
         } catch (error) {
           console.log(error)
+        } finally {
+          setTimeout(
+            () => {setLoading(false)}, 500
+          )
         }
       };
 
@@ -45,6 +51,14 @@ const SpecificSub = () => {
   
   return (
     <>
+    {loading ? 
+    (
+      <div className="loading">
+        <span className="loader"></span>
+      </div>
+    )
+    :
+    (
       <div className="subject-detail">
         <div className="subject-container">
           <div className="top-controls">
@@ -110,7 +124,7 @@ const SpecificSub = () => {
         </div>
 
       </div>
-    
+    )}
     </>
   )
 }

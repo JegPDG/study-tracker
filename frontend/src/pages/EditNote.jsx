@@ -68,6 +68,15 @@ const EditNote = () => {
     <>
       <div className="new-note-main">
         <div className="newnote-container">
+           <div className="top-controls">
+              <button className='back-arrow'
+                onClick={() => navigate(-1)}
+                >
+                <img src={arrowback} alt="" />
+              </button>
+            </div>
+
+
           <p className='note-subject-relate'> {othernote?.subject.name}</p>
           <p className='note-created'> {othernote?.updated_at}</p>
 

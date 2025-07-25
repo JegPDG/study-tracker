@@ -13,6 +13,7 @@ import SpecificSub from './pages/SpecificSub';
 import NewNote from './pages/NewNote';
 import Note from './pages/Note';
 import EditNote from './pages/EditNote';
+import AllNotes from './pages/AllNotes';
 
 function App() {
   
@@ -36,6 +37,8 @@ function App() {
             <Route path='/note/:id' element={<Note></Note>}></Route>
 
             <Route path='/note/:id/edit' element={<EditNote></EditNote>}></Route>
+
+            <Route path='/note' element={<AllNotes/>}></Route>
 
           </Route>
         </Routes>

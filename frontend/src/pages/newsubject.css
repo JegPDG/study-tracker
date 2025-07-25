@@ -44,9 +44,11 @@
   padding: 20px 25px;
   border-radius: var(--radius-lg);
   font-size: 2rem;
-  font-weight: bold;
   border-style: none;
   width: 100%;
+  font-family: var(--big-fonts);
+  color: var(--primary-green);
+
 }
 
 .input-description-card{
@@ -78,5 +80,9 @@
   font-weight: bold;
   border-radius: var(--radius-md);
   cursor: pointer;
+}
+
+.but-cont button:hover{
+  background-color: rgb(104, 48, 199);
 }
 

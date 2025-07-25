@@ -10,6 +10,7 @@ const Subjects= () => {
   const {authToken} = useContext(AuthContext);
   const [subjects, setSubjects] = useState([]);
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false)
 
   // const navigateTo = (num) => {
   //   navigate(`/${num}`);
@@ -18,13 +19,18 @@ const Subjects= () => {
   useEffect( () => {
     const getSubjects = async () => {
       try {
+        setLoading(true)
         const response = await api.get('subject/')
         setSubjects(response.data)
         console.log(response.data)
         
       } catch (error) {
         console.log('Did not get the subjects', error)
-      } 
+      } finally {
+        setTimeout(() =>{
+          setLoading(false)
+        }, 1000)
+      }
     }
 
     if(authToken) getSubjects();
@@ -35,6 +41,14 @@ const Subjects= () => {
 
   return (
     <>
+    {loading ? 
+    (
+      <div className="loading">
+        <span className="loader"></span>
+      </div>
+    )
+    :
+    (
       <div className="main-subjects-dash">
         <div className="subject-section">
           <p className="subj-header">SUBJECTS</p>
@@ -80,6 +94,8 @@ const Subjects= () => {
         </div>
 
       </div>
+    )
+    }
     </>  
 
 

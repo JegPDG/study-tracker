@@ -1,0 +1,36 @@
+.allnote-container ul{
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  flex-wrap: wrap;
+  margin-top: 16px;
+
+}
+
+.allnote-title{
+  font-family: var(--big-fonts);
+  font-size: 1.5rem;
+  line-height: 30px;
+  
+  display: -webkit-box;
+  -webkit-line-clamp: 3;  /* Number of lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.allnote-content{
+  font-family: var(--roboto);
+  font-size: 0.8rem;
+  margin-top: 10px;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 6;  /* Number of lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.related-sub{
+  font-weight: bold;
+  font-size: 12px;
+}

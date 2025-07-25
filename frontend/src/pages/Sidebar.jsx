@@ -45,7 +45,6 @@ const Sidebar = () => {
   return (
     <>
       <div className='main-sidebar'>
-       
        <ul className='side-bar-elements'>
         {sidebartext.map((sideEl, index) => 
           <li  key={index}>

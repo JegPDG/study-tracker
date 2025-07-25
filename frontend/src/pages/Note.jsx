@@ -5,9 +5,6 @@ import { useNavigate, useParams } from 'react-router-dom'
 
 import arrowback from '../assets/back-arrow.svg'
 
-
-
-
 const Note = () => {
   const {id} = useParams();
   const [note, setNote] = useState(null);
@@ -29,6 +26,21 @@ const Note = () => {
 
   }, [id])
 
+  const handleDelete = async () => {
+    if(window.confirm('Do you want to delete the subject?')){
+      try {
+      await api.delete(`/note/${id}/`)
+      navigate(`/subject/${note.subject.id}`)
+      console.log('Subject deleted')
+      } catch (error) {
+        console.log('Unable to delete', error.text)
+      }
+      
+    } else{
+      alert("Subject not deleted")
+    }
+
+  }
  
 
 
@@ -52,26 +64,12 @@ const Note = () => {
           <div className='content-functions'>
             <button 
               type='submit'
-              onClick={() => {
-                navigate(`/note/${id}/edit`)
-              }}
+              onClick={() => navigate(`/note/${id}/edit`)
+              }
             >Edit</button>
 
             <button
-              onClick={ async () => {
-                if(window.confirm('Do you want to delete the subject?')){
-                 try {
-                  await api.delete(`/note/${id}/`)
-                  navigate(`/subject/${note.subject.id}`)
-                  console.log('Subject deleted')
-                 } catch (error) {
-                    console.log('Unable to delete', error.text)
-                 }
-                  
-                } else{
-                  alert("Subject not deleted")
-                }
-              }}
+              onClick={handleDelete}
             
             >Delete</button>
           </div>

@@ -14,6 +14,7 @@ import NewNote from './pages/NewNote';
 import Note from './pages/Note';
 import EditNote from './pages/EditNote';
 import AllNotes from './pages/AllNotes';
+import SignUp from './pages/SignUp';
 
 function App() {
   
@@ -23,6 +24,7 @@ function App() {
       <Router>
         <Routes>
           <Route path='/login' element={<Login></Login>} ></Route>
+          <Route path='/signup' element={<SignUp></SignUp>} ></Route>
 
           <Route element={<Layout></Layout>}> 
 

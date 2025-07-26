@@ -86,15 +86,16 @@
   z-index: 10;
 }
 
-.username{
-  font-family: var(--big-fonts);
-  color: var(--color-tertiary);
-}
 
 .password{
   font-family: var(--big-fonts);
   color: var(--color-tertiary);
-  margin-top: 24px;
+}
+
+.form-inputs-name{
+  margin-bottom: 24px;
+  font-family: var(--big-fonts);
+  color: var(--color-tertiary);
 }
 
 .question{
@@ -140,4 +141,8 @@ form{
   bottom: -100px;
   opacity: 0.65;
   
+}
+
+.auth-children-div{
+  width: 100%;
 }

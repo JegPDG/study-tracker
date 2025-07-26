@@ -1,49 +1,63 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState } from 'react'
+import AuthLayout from './AuthLayout'
+
+import bud from '../assets/bud.svg';
 import { useNavigate, Link } from 'react-router-dom';
-import './login.css';
 import { AuthContext } from '../context/AuthContext';
 
-import glasses from '../assets/glasses-purple.svg';
-import bud from '../assets/bud.svg';
-import AuthLayout from './AuthLayout';
 
-const Login = () => {
-  const {loginUser} = useContext(AuthContext);
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+
+const SignUp = () => {
+  const {signUpUser} = useContext(AuthContext);
+  const [newusername, setUsername] = useState('');
+  const [newpassword, setPassword] = useState('');
+  const [newemail, setEmail] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Trying to log in")
+    console.log("Trying to sign up in")
 
-    const success = await loginUser(username, password);
+    const success = await signUpUser(newusername, newemail, newpassword);
 
     if (success){
       console.log("Redirecting to the Subject page")
-      navigate('/subject');
+      navigate('/login');
     } else {
-      console.log("Log in failed");
+      console.log("Sign Up failed");
     }
   };
   
+
+
+
   return (
     <>
-      <AuthLayout>        
+      <AuthLayout>
             <img src={bud} alt="" className="bud" />
             <div className="login-message">
-              <p>Welcome back!</p>
-              <p>Log in to your account to continue.</p>
+              <p>Sign Up!</p>
+              <p>Fill out the form and sign up to continue.</p>
             </div>
         
             <div className="login-form-cont">
               <form onSubmit={handleSubmit}>
-                <div className="username form-inputs-name">
+                <div className="form-inputs-name">
                   <p>username</p>
                   <input 
                     type="text" 
                     placeholder='username'
                     onChange={(e) => setUsername(e.target.value)}
+                    required
+                    />
+                </div>
+    
+                <div className="form-inputs-name">
+                  <p>email</p>
+                  <input 
+                    type="email" 
+                    placeholder='email'
+                    onChange={(e) => setEmail(e.target.value)}
                     required
                     />
                 </div>
@@ -58,17 +72,15 @@ const Login = () => {
                     />
                 </div>
     
-                <p className="question">
-                  Forgot your password?
-                </p>
-    
-                <button type='submit'>LOGIN</button>
+                <button type='submit'>SIGN UP</button>
     
                 <p className="question">
-                  Don't have an account? &nbsp;
-                  <Link to='/signup'>
-                    Sign up
-                  </Link>
+                  Already got an account? Go to &nbsp;
+                  <span>
+                    <Link to='/login'>
+                      Login
+                    </Link>
+                  </span> 
                 </p>
     
               </form>
@@ -79,4 +91,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default SignUp

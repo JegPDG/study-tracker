@@ -25,6 +25,25 @@ export const AuthProvider = ({children}) => {
     }
   }
 
+  const signUpUser = async(username, email, password) => {
+    try {
+
+      const response = await api.post('auth/register/',     {username, email, password},
+        {
+        headers: {
+          Authorization: undefined, // 👈 clears any existing Bearer token
+        },
+      }
+      );
+
+      console.log("User registered:", response.data)
+      return true
+    } catch (error) {
+       console.error('Sign-up failed:', error.response?.data);
+       return false
+    }
+  }
+
   const logoutUser = () => {
     setAuthToken(null);
     localStorage.removeItem('token');
@@ -39,7 +58,7 @@ export const AuthProvider = ({children}) => {
   }, [authToken]);
 
    return (
-    <AuthContext.Provider value={{ authToken, loginUser, logoutUser}}>
+    <AuthContext.Provider value={{ authToken, loginUser, logoutUser, signUpUser}}>
       {children}
     </AuthContext.Provider>
   );

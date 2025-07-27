@@ -15,10 +15,14 @@ export const AuthProvider = ({children}) => {
       console.log(response.data)
       setAuthToken(token)
       setRefresh(refresh)
+
       localStorage.setItem('refresh', refresh)
       localStorage.setItem('token', token)
+
       api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
       return true;
+
     } catch (error){
       console.error('Login failed:', error);
       return false;
@@ -28,12 +32,7 @@ export const AuthProvider = ({children}) => {
   const signUpUser = async(username, email, password) => {
     try {
 
-      const response = await api.post('auth/register/',     {username, email, password},
-        {
-        headers: {
-          Authorization: undefined, // 👈 clears any existing Bearer token
-        },
-      }
+      const response = await api.post('auth/register/', {username, email, password},
       );
 
       console.log("User registered:", response.data)
@@ -51,11 +50,6 @@ export const AuthProvider = ({children}) => {
 
   };
 
-  useEffect(() => {
-    if (authToken) {
-      api.defaults.headers.common['Authorization'] = `Bearer ${authToken}`;
-    }
-  }, [authToken]);
 
    return (
     <AuthContext.Provider value={{ authToken, loginUser, logoutUser, signUpUser}}>

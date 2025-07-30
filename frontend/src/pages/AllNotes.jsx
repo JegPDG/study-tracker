@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import './allnotes.css'
 import api from '../services/api'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+import search from '../assets/search-light.svg';
+
 
 const AllNotes = () => {
   const navigate = useNavigate();
@@ -41,6 +43,18 @@ const AllNotes = () => {
       <div className="main-subjects-dash">
         <div className="subject-section">
           <p className="subj-header">NOTES</p>
+
+          <div className="function-containers">
+            <div className="search">
+              <img src={search} alt="" />
+              <p>Search...</p>
+            </div>
+          </div>
+
+          <div className="subject-links">
+            <p>Recently added</p>
+            <p>Recently deleted</p>
+          </div>
 
           <div className="allnote-container">
             <ul>

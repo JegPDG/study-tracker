@@ -110,8 +110,13 @@
 .line{
   width: 60px;
   height: 2.5px;
-  background-color: var(--text-dark);
+  background-color: var(--color-tertiary);
   border-radius: 5px;
+}
+
+.function-containers{
+  display: flex;
+  gap: 20px;
 }
 
 .function-containers button{
@@ -123,5 +128,22 @@
   border-radius: 15px;
   border: 2px solid var(--color-tertiary) ;
   cursor: pointer;
+  color: var(--color-secondary);
 
+}
+
+.function-containers button:hover{
+  background-color: rgb(214, 214, 219);
+  color: var(--color-secondary);
+}
+
+
+.subject-links{
+  display: flex;
+  font-size: 14px;
+  gap: 20px;
+  margin-top: 16px;
+  text-decoration: underline;
+  color: var(--color-secondary);
+  font-weight: bold;
 }

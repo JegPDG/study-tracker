@@ -5,6 +5,8 @@ import './subjects.css'
 import Sidebar from './Sidebar';
 import Navbar from './Navbar';
 import { useNavigate } from 'react-router-dom';
+import search from '../assets/search-light.svg';
+
 
 const Subjects= () => {
   const {authToken} = useContext(AuthContext);
@@ -54,9 +56,19 @@ const Subjects= () => {
           <p className="subj-header">SUBJECTS</p>
 
           <div className="function-containers">
+            <div className="search">
+              <img src={search} alt="" />
+              <p>Search...</p>
+            </div>
+
             <button 
               onClick={ () => navigate('/subject/new')}
             >Add Subject</button>
+          </div>
+
+          <div className="subject-links">
+            <p>Recently added</p>
+            <p>Recently deleted</p>
           </div>
 
           <div className="subject-list-cont">

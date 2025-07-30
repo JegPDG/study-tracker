@@ -50,7 +50,7 @@ const Note = () => {
         <div className="newnote-container">
           <div className="top-controls">
             <button className='back-arrow'
-              onClick={() => navigate(-1)}
+              onClick={() => navigate(`/subject/${note?.subject.id}`)}
               >
               <img src={arrowback} alt="" />
             </button>

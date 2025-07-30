@@ -14,10 +14,9 @@ const Navbar = () => {
             <p>STUDBUD</p>
 
             <div className="search">
-            <img src={search} alt="" />
-            <p>Search...</p>
-
-          </div>
+              <img src={search} alt="" />
+              <p>Search...</p>
+            </div>
 
           </div>
 

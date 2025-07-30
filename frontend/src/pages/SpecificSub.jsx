@@ -10,7 +10,6 @@ import arrowback from '../assets/back-arrow.svg'
 const SpecificSub = () => {
   let { id } = useParams();
   const [subject, setSubject] = useState([]);
-  const {authtoken} = useContext(AuthContext);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false)
 
@@ -36,19 +35,6 @@ const SpecificSub = () => {
 
     }, [id])
 
-
-
-  const placeholder = [
-    {
-      title: 'Bilat na mabaho',
-      content: 'Sobrang baho ansakit sa ilong. pagamot mo na yan'
-    },
-      {
-      title: 'CS01: Mathematics of the Modern World by Jane the birkin pr pinaslang ni lapu',
-      content: 'Sobrang baho ansakit sa ilong. pagamot mo na yan.Sobrang baho ansakit sa ilong. pagamot mo na yanSobrang baho ansakit sa ilong. pagamot mo na yanSobrang baho ansakit sa ilong. pagamot mo na yanSobrang baho ansakit sa ilong. pagamot mo na yan'
-    }
-  ]
-  
   return (
     <>
     {loading ? 
@@ -63,7 +49,7 @@ const SpecificSub = () => {
         <div className="subject-container">
           <div className="top-controls">
             <button className='back-arrow'
-              onClick={() => navigate(-1)}
+              onClick={() => navigate('/note')}
               >
               <img src={arrowback} alt="" />
             </button>

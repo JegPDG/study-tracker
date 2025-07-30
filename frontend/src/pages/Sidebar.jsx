@@ -8,6 +8,9 @@ import notes from '../assets/notes.svg';
 import bookmarks from '../assets/bookmarks.svg';
 import flashcard from '../assets/flashcard.svg';
 import ai from '../assets/ai.svg';
+import glassAndLeaf from '../assets/glass-and-leaf.svg';
+
+
 import { useNavigate } from 'react-router-dom';
 
 
@@ -59,6 +62,20 @@ const Sidebar = () => {
           </li>
           )}
       </ul>
+
+      <div className="bottom-elements">
+          <img src={glassAndLeaf} alt="" />
+          
+        <div className="">
+          <img src={subject} alt="" />
+          <p>Help</p>
+        </div>
+
+         <div className="">
+          <img src={subject} alt="" />
+          <p>Settings</p>
+        </div>
+      </div>
 
       </div>
     </>

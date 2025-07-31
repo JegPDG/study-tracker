@@ -20,6 +20,9 @@ const Sidebar = () => {
   const sidebartext = [
     {text: 'Dashboard',
       icon: dashboard,
+      goto: () => {
+        navigate('/dashboard')
+      },
     }, 
     {text: 'Subjects',
       icon: subject,

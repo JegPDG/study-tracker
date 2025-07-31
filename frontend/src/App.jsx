@@ -15,6 +15,7 @@ import Note from './pages/Note';
 import EditNote from './pages/EditNote';
 import AllNotes from './pages/AllNotes';
 import SignUp from './pages/SignUp';
+import DashLayout from './pages/Dashboard/DashLayout';
 
 function App() {
   
@@ -41,6 +42,8 @@ function App() {
             <Route path='/note/:id/edit' element={<EditNote></EditNote>}></Route>
 
             <Route path='/note' element={<AllNotes/>}></Route>
+
+            <Route path='/dashboard' element={<DashLayout/>}></Route>
 
           </Route>
         </Routes>

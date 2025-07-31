@@ -134,6 +134,10 @@ form{
   cursor: pointer;
 }
 
+.login-form-cont button:hover{
+  background-color:  #8792b5;
+}
+
 .bud{
   position: absolute; 
   width: 800px;

@@ -58,4 +58,42 @@
 .navbar-main .nav-menu{
   height: 20px;
   width: auto;
+  cursor: pointer;
+}
+
+.menu-function{
+  position: relative;
+}
+
+.menu-function .function-box{
+  position: absolute;
+  background-color: var(--bg-light);
+  width: 250px;
+  right: 0;
+  border-radius: var(--radius-md);
+  padding: 10px 20px;
+
+  color: var(--color-tertiary);
+
+  z-index: 10;
+}
+
+.function-box ul{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2px;
+}
+
+.function-box li{
+  display: flex;
+  gap: 20px;
+  padding: 5px 10px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.function-box li:hover{
+  background-color: rgb(86, 77, 128, 0.4);
 }

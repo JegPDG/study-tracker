@@ -47,7 +47,7 @@ export const AuthProvider = ({children}) => {
     setAuthToken(null);
     localStorage.removeItem('token');
     delete api.defaults.headers.common['Authorization'];
-
+    
   };
 
 

@@ -21,7 +21,7 @@ const Login = () => {
 
     if (success){
       console.log("Redirecting to the Subject page")
-      navigate('/subject');
+      navigate('/dashboard');
     } else {
       console.log("Log in failed");
     }

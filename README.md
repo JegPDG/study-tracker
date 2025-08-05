@@ -1,24 +1,17 @@
-Absolutely! Here's a **professional and detailed `README.md`** template for your full-stack study companion project built with **React (Vite) + Django REST Framework + JWT + React Query**.
-
-You can copy this, tweak a few details like repo links, screenshots, or deployment URLs, and you're good to go.
-
----
-
-```markdown
 # 📚 Study Companion App
 
 A full-stack Study Companion app designed to help students organize their academic life by managing **subjects**, **notes**, and keeping track of recent updates through a **dashboard**. Built with **React (Vite)**, **Django REST Framework**, **React Query**, and **JWT authentication**.
 
 ---
 
-## ✨ Features
+Features
 
-- 🔐 User Authentication (JWT)
-- 📁 Subject and Notes Management
-- 📊 Dashboard with recent updates
-- 📅 Calendar view integration
-- 🧠 Clean UI/UX with responsive design
-- ⚡ API data fetching with React Query
+- User Authentication (JWT)
+- Subject and Notes Management
+- Dashboard with recent updates
+- Calendar view integration
+- Clean UI/UX with responsive design
+- API data fetching with React Query
 
 ---
 
@@ -28,8 +21,6 @@ A full-stack Study Companion app designed to help students organize their academ
 - **React (Vite)**
 - **React Router**
 - **React Query** (for API state management)
-- **Tailwind CSS** (for styling)
-- **Day.js** (for date formatting)
 
 ### 🐍 Backend
 - **Django**
@@ -75,39 +66,6 @@ backend/
 
 ---
 
-## 🚀 Getting Started
-
-### 🔧 Prerequisites
-
-- Node.js
-- Python 3.8+
-- PostgreSQL or SQLite
-
----
-
-### 🖥️ Frontend Setup
-
-```bash
-cd frontend
-npm install
-npm run dev
-````
-
----
-
-### 🐍 Backend Setup
-
-```bash
-cd backend
-python -m venv venv
-source venv/bin/activate  # On Windows use `venv\Scripts\activate`
-pip install -r requirements.txt
-python manage.py migrate
-python manage.py runserver
-```
-
----
-
 ## 🔑 Authentication Flow
 
 * Users log in via JWT.
@@ -118,8 +76,8 @@ python manage.py runserver
 
 ## 📊 Dashboard Overview
 
-* Displays **latest 5 subjects** (title, date created, note count).
-* Displays **latest 5 notes** (title, updated date).
+* Displays **latest subjects** (title, date created, note count).
+* Displays **latest 10 notes** (title, updated date).
 * Dynamic and responsive using `grid` layout.
 * Calendar placeholder integrated for future scheduling features.
 
@@ -147,12 +105,6 @@ You can test endpoints using tools like:
 
 ---
 
-## 📸 Screenshots
-
-*Add screenshots here if available.*
-
----
-
 ## 📚 Future Improvements
 
 * ✅ Add calendar-based scheduling/reminders
@@ -160,35 +112,11 @@ You can test endpoints using tools like:
 * ✅ Rich text editor for note content
 * ✅ User profile customization
 
----
-
-## 📄 License
-
-MIT License. Free to use and modify.
-
----
-
-## 🤝 Acknowledgements
-
-* [React Query Docs](https://tanstack.com/query/latest)
-* [Django REST Framework](https://www.django-rest-framework.org/)
-* [SimpleJWT](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/)
-
----
-
 ## 🙋‍♂️ Author
 
 **Paduga Jeg A.**
 *Bachelor of Science in Computer Science*
 
-* GitHub: [yourusername](https://github.com/yourusername)
-* LinkedIn: [yourprofile](https://linkedin.com/in/yourprofile)
+* LinkedIn: www.linkedin.com/in/paduga-jeg-a-49b629349
 
----
 
-```
-
----
-
-Let me know if you want a **shorter version**, or want to **include deployment instructions**, or if you're planning to publish this on **GitHub Pages / Vercel / Heroku**, and I’ll tailor it accordingly.
-```

@@ -8,11 +8,10 @@ class SubjectPreviewSerializer(serializers.ModelSerializer):
     model= Subject
     fields = ['id', 'name', 'note_count', 'created_at']
 
-class NotePreviewSerializer(serializers.ModelSerializer):
+class NoteDashBoardSerializer(serializers.ModelSerializer):
   class Meta:
     model = Notes
     fields = ['id', 'title', 'updated_at']
-
 
 
 class NoteSerializer(serializers.ModelSerializer):

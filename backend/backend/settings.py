@@ -28,7 +28,11 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+  'localhost',
+  '127.0.0.1',
+  os.getenv('RENDER_EXTERNAL_HOSTNAME', '')
+]
 
 
 # Application definition
@@ -138,7 +142,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'users.User'
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",  # React dev server
+    "study-tracker-h92g3lryi-jegs-projects-cfd359c1.vercel.app",  # React dev server
 ]
 
 REST_FRAMEWORK = {

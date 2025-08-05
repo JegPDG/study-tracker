@@ -1,10 +1,28 @@
 import React from 'react'
 import './dashboard.css'
+import api from '../../services/api'
+import dayjs from 'dayjs';
+
 
 import subject_icon from '../../assets/subjects.svg'
 import plus_sign from '../../assets/plus-sign.svg'
+import { useQuery } from '@tanstack/react-query'
 
 const DashLayout = () => {
+
+  const {data: subjectData, isLoading, error} = useQuery({
+    queryKey : ['dashSubjects'],
+    queryFn : () => api.get('dashboard/subjects/').then(res => res.data)
+  })
+
+   const {data: noteData, isLoading: noteLoading, error: noteError} = useQuery({
+    queryKey : ['dashNotes'],
+    queryFn : () => api.get('dashboard/notes/').then(res => res.data)
+  })
+
+  console.log("dashbord-subject-data", subjectData)
+  console.log("dashbord-note-data", noteData)
+
 
   const placeholder = [
     {title:"Django rest",
@@ -28,7 +46,6 @@ const DashLayout = () => {
       date: '09/31/25'
     }
   ]
-
   const asignment = [
     {
       title: "Homework number 1",
@@ -66,11 +83,11 @@ const DashLayout = () => {
         </div>
         <div className="line dash-line"></div>
         <ul className='subject-ul'>
-          {placeholder.map((subject, index) =>
+          {subjectData?.subjects.map((subject, index) =>
             <li className='subject-list' key={index}>
-              <p>HElo</p>
-              <p>Anyioung</p>
-              <p>73i74</p>
+              <p>{subject.name}</p>
+              <p>{subject.note_count}</p>
+              <p>{dayjs(subject.created_at).format('MMMM DD, YYYY')}</p>
             </li>
           )}
         </ul>
@@ -78,7 +95,7 @@ const DashLayout = () => {
         <div className="dash-sub-bot">
           <div className="total-sub">
             <p>Total Subjects</p>
-            <p>178</p>
+            <p>{subjectData?.total_subjects}</p>
           </div>
 
           <div className="add-sub">
@@ -102,11 +119,11 @@ const DashLayout = () => {
         </div>
 
         <div className="line dash-line"></div>
-        <ul>
-          {placeholder.map((note, index) => 
+        <ul className='note-ul'>
+          {noteData.map((note, index) => 
              <li className='note-list' key={index}>
                 <p>{note.title}</p>
-                <p>{note.date}</p>
+                <p>{dayjs(note.updated_at).format('MMMM DD, YYYY')}</p>
              </li>
           
           )}

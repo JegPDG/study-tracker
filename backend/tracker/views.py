@@ -5,7 +5,7 @@ from rest_framework import viewsets, permissions
 from rest_framework.response import Response
 from rest_framework.generics import ListAPIView
 from .models import User, Subject, Notes
-from tracker.serializers import SubjectSerializer, NoteSerializer, SubjectPreviewSerializer
+from tracker.serializers import SubjectSerializer, NoteSerializer, SubjectPreviewSerializer, NotePreviewSerializer, NoteDashBoardSerializer
 
 # Create your views here.
 
@@ -32,10 +32,14 @@ class SubjectDashboardViewSet(ListAPIView):
       'total_subjects' : total_subjects,
       'subjects' : serializer.data,
     })
-  
 
-# class NoteDashboardView(ListAPIView):
-  
+class NoteDashboardView(ListAPIView):
+  serializer_class = NoteDashBoardSerializer
+  permission_classes = [permissions.IsAuthenticated]
+
+  def get_queryset(self):
+    user = self.request.user
+    return Notes.objects.filter(subject__user=user).order_by('-updated_at')[:10]
 
 class SubjectsViewSet(viewsets.ModelViewSet):
   queryset = Subject.objects.none()

@@ -12,28 +12,38 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
-import dj_database_url
-from decouple import config
+import environ
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Initialize environment
+env = environ.Env(
+   DEBUG=(bool, False)
+)
+
+
+ENVIRONMENT = os.environ.get('ENVIRONMENT', 'development')
+
+env_file = BASE_DIR / f".env.{ENVIRONMENT}"
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = env.bool("DEBUG", default=False)
 
-ALLOWED_HOSTS = [
-  'localhost',
-  '127.0.0.1',
-  os.getenv('RENDER_EXTERNAL_HOSTNAME', '')
-]
-
+# ALLOWED_HOSTS as list from .env
+ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=[
+    'localhost',
+    '127.0.0.1',
+    os.getenv('RENDER_EXTERNAL_HOSTNAME', '')
+])
 
 # Application definition
 
@@ -89,11 +99,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default=config('DATABASE_URL'),
-        conn_max_age=600,
-        ssl_require=True
-    )
+    'default': env.db()
 }
 
 
@@ -141,11 +147,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'users.User'
 
-CORS_ALLOWED_ORIGINS = [
-    "https://study-tracker-rust.vercel.app",
-    "http://localhost:5173",  # React dev server
-    "study-tracker-h92g3lryi-jegs-projects-cfd359c1.vercel.app",
-]
+CORS_ALLOWED_ORIGINS = env.list("CORS_ALLOWED_ORIGINS", default=[
+    "http://localhost:5173"
+])
 
 
 REST_FRAMEWORK = {

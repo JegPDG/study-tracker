@@ -83,7 +83,7 @@ const DashLayout = () => {
         </div>
         <div className="line dash-line"></div>
         <ul className='subject-ul'>
-          {subjectData?.subjects.map((subject, index) =>
+          {subjectData?.subjects?.map((subject, index) =>
             <li className='subject-list' key={index}>
               <p>{subject.name}</p>
               <p>{subject.note_count}</p>
@@ -120,7 +120,7 @@ const DashLayout = () => {
 
         <div className="line dash-line"></div>
         <ul className='note-ul'>
-          {noteData.map((note, index) => 
+          {noteData?.map((note, index) => 
              <li className='note-list' key={index}>
                 <p>{note.title}</p>
                 <p>{dayjs(note.updated_at).format('MMMM DD, YYYY')}</p>
@@ -137,7 +137,7 @@ const DashLayout = () => {
         </div>
 
         <ul>
-          {asignment.map((task, index) => 
+          {asignment?.map((task, index) => 
             <li className='assgn-list' key={index}>
                <div className='assgn-detail'>
                 <p>{task.title}</p>

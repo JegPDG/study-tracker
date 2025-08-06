@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://study-tracker-csnc.onrender.com/api/', // Your Django API URL import.meta.env.VITE_API_BASE_URL
+  baseURL: import.meta.env.VITE_API_BASE_URL, // Your Django API URL import.meta.env.VITE_API_BASE_URL
 });
 
 api.interceptors.request.use(

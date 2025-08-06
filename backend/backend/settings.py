@@ -142,8 +142,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'users.User'
 
 CORS_ALLOWED_ORIGINS = [
-    "study-tracker-h92g3lryi-jegs-projects-cfd359c1.vercel.app",  # React dev server
+    "https://study-tracker-rust.vercel.app",
+    "http://localhost:5173",  # React dev server
+    "study-tracker-h92g3lryi-jegs-projects-cfd359c1.vercel.app",
 ]
+
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (

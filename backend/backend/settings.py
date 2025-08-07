@@ -28,6 +28,8 @@ ENVIRONMENT = os.environ.get('ENVIRONMENT', 'development')
 
 env_file = BASE_DIR / f".env.{ENVIRONMENT}"
 
+# Load environment variables from the correct .env file
+environ.Env.read_env(env_file)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/

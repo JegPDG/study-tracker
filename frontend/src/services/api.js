@@ -4,6 +4,8 @@ const api = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL, // Your Django API URL import.meta.env.VITE_API_BASE_URL
 });
 
+console.log(import.meta.env.VITE_API_BASE_URL)
+
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('token');

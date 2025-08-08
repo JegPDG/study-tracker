@@ -9,6 +9,8 @@ import bookmarks from '../assets/bookmarks.svg';
 import flashcard from '../assets/flashcard.svg';
 import ai from '../assets/ai.svg';
 import glassAndLeaf from '../assets/glass-and-leaf.svg';
+import help from '../assets/help.svg';
+import settings from '../assets/settings.svg';
 
 
 import { useNavigate } from 'react-router-dom';
@@ -70,12 +72,12 @@ const Sidebar = () => {
           <img src={glassAndLeaf} alt="" />
           
         <div className="">
-          <img src={subject} alt="" />
+          <img src={help} alt="" />
           <p>Help</p>
         </div>
 
          <div className="">
-          <img src={subject} alt="" />
+          <img src={settings} alt="" />
           <p>Settings</p>
         </div>
       </div>

@@ -2,10 +2,15 @@ from .models import Subject, Notes
 from rest_framework import serializers
 
 class SubjectPreviewSerializer(serializers.ModelSerializer):
-  note_count = serializers.IntegerField()
-  
   class Meta:
     model= Subject
+    fields = ['id', 'name']
+
+class SubjectDashboardSerializer(serializers.ModelSerializer):
+  note_count = serializers.IntegerField()
+
+  class Meta:
+    model=Subject
     fields = ['id', 'name', 'note_count', 'created_at']
 
 class NoteDashBoardSerializer(serializers.ModelSerializer):

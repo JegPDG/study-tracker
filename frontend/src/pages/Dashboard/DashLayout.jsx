@@ -6,6 +6,9 @@ import dayjs from 'dayjs';
 
 import subject_icon from '../../assets/subjects.svg'
 import plus_sign from '../../assets/plus-sign.svg'
+import assignment from '../../assets/assignment.svg';
+import notes from '../../assets/notes.svg'
+
 import { useQuery } from '@tanstack/react-query'
 
 const DashLayout = () => {
@@ -109,7 +112,7 @@ const DashLayout = () => {
 
       <div className="notes-card">
         <div className="dash-titles">
-          <img src={subject_icon} alt="" />
+          <img src={notes} alt="" />
           <p>NOtes</p>
         </div>
         
@@ -132,7 +135,7 @@ const DashLayout = () => {
       </div>
       <div className="assignments-card">
         <div className="dash-titles">
-          <img src={subject_icon} alt="" />
+          <img src={assignment} alt="" />
           <p>Assignments</p>
         </div>
 

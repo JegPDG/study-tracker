@@ -3,6 +3,13 @@ import './navbar.css';
 import logo_2 from '../assets/studbud-logo-2.svg';
 import search from '../assets/search-light.svg';
 import menu_nd from '../assets/menu-secondary.svg';
+import account from '../assets/account.svg';
+import notification from '../assets/notification.svg';
+import security from '../assets/security.svg';
+import logout from '../assets/logout.svg';
+
+
+
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
@@ -37,19 +44,19 @@ const Navbar = () => {
   const menuFunctions = [
     {
       name: "Account",
-      img: search
+      img: account
     },
      {
       name: "Security",
-      img: search
+      img: security
     },
      {
       name: "Notifications",
-      img: search
+      img: notification
     },
     {
       name: "Logout",
-      img: search,
+      img: logout,
       function: () => {
           logoutUser()
           navigate('/login')

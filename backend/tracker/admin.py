@@ -31,4 +31,4 @@ class NotesAdmin(admin.ModelAdmin):
   
 
 admin.site.register(Subject, SubjectAdmin)
-admin.site.register(Notes, NotesAdmin)
+admin.site.register(Notes, NotesAdmin)  

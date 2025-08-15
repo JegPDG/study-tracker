@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.db.models import Count
 from django.http import JsonResponse
-from rest_framework import viewsets, permissions
+from rest_framework import viewsets, permissions, filters
 from rest_framework.response import Response
 from rest_framework.generics import ListAPIView
 from .models import User, Subject, Notes
@@ -45,7 +45,10 @@ class SubjectsViewSet(viewsets.ModelViewSet):
   queryset = Subject.objects.none()
   serializer_class = SubjectSerializer
   permission_classes = [permissions.IsAuthenticated]
+  filter_backends = [filters.SearchFilter]
   lookup_field = 'id'
+  search_fields = ['name']
+
 
   def get_queryset(self):
     return self.request.user.subjects.all()
@@ -58,7 +61,9 @@ class NotesViewSet(viewsets.ModelViewSet):
   queryset = Notes.objects.none()
   serializer_class = NoteSerializer
   permission_classes = [permissions.IsAuthenticated]
+  filter_backends = [filters.SearchFilter]
   lookup_field = 'id'
+  search_fields = ['title']
 
   def get_queryset(self):
     return Notes.objects.filter(subject__user=self.request.user)

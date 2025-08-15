@@ -2,13 +2,15 @@ import React, { useEffect, useState } from 'react'
 import './allnotes.css'
 import api from '../services/api'
 import { useNavigate } from 'react-router-dom';
-import search from '../assets/search-light.svg';
+import search_light from '../assets/search-light.svg';
+import { useQuery } from '@tanstack/react-query';
 
 
 const AllNotes = () => {
   const navigate = useNavigate();
   const [allnote, setAllnotes] = useState(null);
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
+  const [search, setSearch] = useState("")
 
   useEffect( () => {
     const getAllnotes = async () => {
@@ -29,6 +31,16 @@ const AllNotes = () => {
     getAllnotes();
   }, [])
 
+  const getNotes = async() => {
+    const res = await api.get(`note/?search=${search}`)
+    return res.data
+  }
+
+  const {data : notes = [], isLoading, error} = useQuery({
+    queryKey: ["notes", search],
+    queryFn: getNotes,
+    keepPreviousData: true
+  })
 
   return (
     <>
@@ -46,8 +58,8 @@ const AllNotes = () => {
 
           <div className="function-containers">
             <div className="search">
-              <img src={search} alt="" />
-              <p>Search...</p>
+              <img src={search_light} alt="" />
+              <input type="text" placeholder='Search...'/>
             </div>
           </div>
 

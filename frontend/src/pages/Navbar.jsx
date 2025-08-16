@@ -12,13 +12,14 @@ import logout from '../assets/logout.svg';
 
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
 
 const Navbar = () => {
-  const {logoutUser} = useContext(AuthContext);
+  const {logoutUser, user} = useContext(AuthContext);
   const [showMenu, setShowMenu] = useState(false);
   const menuRef = useRef(null);
-
   const navigate = useNavigate()
+
 
   const handletoggle = () => {
     setShowMenu(prev => !prev)
@@ -84,11 +85,11 @@ const Navbar = () => {
           <div className="search-menu">
 
             <p className="username">
-              jeggypaduga
+              {user?.username}
             </p>
 
-            <div className="profile-pict">
-            </div>
+            {/* <div className="profile-pict">
+            </div> */}
 
             <div className="menu-function">
               <div

@@ -1,59 +1,42 @@
-import { useState } from 'react'
+import { lazy, Suspense } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './app.css';
-import Login from './pages/Login'
-import Subjects from './pages/Subjects'
-import Sidebar from './pages/Sidebar'
-import Navbar from './pages/Navbar'
-import NewSubject from './pages/NewSubject';
-import Layout from './pages/Layout';
-import SpecificSub from './pages/SpecificSub';
-import NewNote from './pages/NewNote';
-import Note from './pages/Note';
-import EditNote from './pages/EditNote';
-import AllNotes from './pages/AllNotes';
-import SignUp from './pages/SignUp';
-import DashLayout from './pages/Dashboard/DashLayout';
+
+const Login = lazy(() => import('./pages/Login'));
+const Subjects = lazy(() => import('./pages/Subjects'));
+const Sidebar = lazy(() => import('./pages/Sidebar'));
+const Navbar = lazy(() => import('./pages/Navbar'));
+const NewSubject = lazy(() => import('./pages/NewSubject'));
+const Layout = lazy(() => import('./pages/Layout'));
+const SpecificSub = lazy(() => import('./pages/SpecificSub'));
+const NewNote = lazy(() => import('./pages/NewNote'));
+const Note = lazy(() => import('./pages/Note'));
+const EditNote = lazy(() => import('./pages/EditNote'));
+const AllNotes = lazy(() => import('./pages/AllNotes'));
+const SignUp = lazy(() => import('./pages/SignUp'));
+const DashLayout = lazy(() => import('./pages/Dashboard/DashLayout'));
 
 function App() {
-  
-
   return (
-    <>
-      <Router>
+    <Router>
+      <Suspense fallback={<div>Loading...</div>}>
         <Routes>
-          <Route path='/' element={<Login></Login>} ></Route>
-          <Route path='/login' element={<Login></Login>} ></Route>
-          <Route path='/signup' element={<SignUp></SignUp>} ></Route>
-
-          <Route element={<Layout></Layout>}> 
-
-            <Route path='/subject' element={<Subjects></Subjects>}></Route>
-
-            <Route path='/subject/new' element={<NewSubject></NewSubject>}></Route>
-
-            <Route path='/subject/:id' element={<SpecificSub></SpecificSub>}></Route>
-
-            <Route path='/subject/:id/newnote' element={<NewNote></NewNote>}></Route>
-
-            <Route path='/note/:id' element={<Note></Note>}></Route>
-
-            <Route path='/note/:id/edit' element={<EditNote></EditNote>}></Route>
-
-            <Route path='/note' element={<AllNotes/>}></Route>
-
-            <Route path='/dashboard' element={<DashLayout/>}></Route>
-
+          <Route path='/' element={<Login />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/signup' element={<SignUp />} />
+          <Route element={<Layout />}>
+            <Route path='/subject' element={<Subjects />} />
+            <Route path='/subject/new' element={<NewSubject />} />
+            <Route path='/subject/:id' element={<SpecificSub />} />
+            <Route path='/subject/:id/newnote' element={<NewNote />} />
+            <Route path='/note/:id' element={<Note />} />
+            <Route path='/note/:id/edit' element={<EditNote />} />
+            <Route path='/note' element={<AllNotes />} />
+            <Route path='/dashboard' element={<DashLayout />} />
           </Route>
         </Routes>
-      </Router>
-
-      {/* <Sidebar></Sidebar> */}
-      {/* <Subjects></Subjects> */}
-      {/* <Login></Login> */}
-    </>
+      </Suspense>
+    </Router>
   )
 }
 

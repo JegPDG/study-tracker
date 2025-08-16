@@ -5,45 +5,31 @@ import './subjects.css'
 import Sidebar from './Sidebar';
 import Navbar from './Navbar';
 import { useNavigate } from 'react-router-dom';
-import search from '../assets/search-light.svg';
+import search_light from '../assets/search-light.svg';
+import { useQuery } from '@tanstack/react-query';
+import { useDebounce } from 'use-debounce';
 
 
 const Subjects= () => {
-  const {authToken} = useContext(AuthContext);
-  const [subjects, setSubjects] = useState([]);
+  const [search, setSearch] = useState('');
+  const [debouncedSearch] = useDebounce(search, 300);
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(false)
 
-  // const navigateTo = (num) => {
-  //   navigate(`/${num}`);
-  // }
+  const getSubjects = async () => {
+    const res = await api.get(`subject/?search=${debouncedSearch}`)
+    return res.data
+  }
 
-  useEffect( () => {
-    const getSubjects = async () => {
-      try {
-        setLoading(true)
-        const response = await api.get('subject/')
-        setSubjects(response.data)
-        console.log(response.data)
-        
-      } catch (error) {
-        console.log('Did not get the subjects', error)
-      } finally {
-        setTimeout(() =>{
-          setLoading(false)
-        }, 1000)
-      }
-    }
-
-    if(authToken) getSubjects();
-
-  }, [authToken])
-
+  const {data: subjects = [], isLoading, error} = useQuery({
+    queryKey: ['subjects', debouncedSearch ],
+    queryFn: getSubjects,
+    keepPreviousData: true
+  })
 
 
   return (
     <>
-    {loading ? 
+    {isLoading ? 
     (
       <div className="loading">
         <span className="loader"></span>
@@ -57,8 +43,12 @@ const Subjects= () => {
 
           <div className="function-containers">
             <div className="search">
-              <img src={search} alt="" />
-              <p>Search...</p>
+              <img src={search_light} alt="" />
+              <input 
+                type="text"
+                placeholder='Search...'
+                value={search}
+                onChange={(e) => setSearch(e.target.value)} />
             </div>
 
             <button 
@@ -73,7 +63,7 @@ const Subjects= () => {
 
           <div className="subject-list-cont">
             <ul>
-              {subjects.map((subject) => 
+              {subjects?.map((subject) => 
                 <li key={subject.id}>
                   <div 
                   onClick={() => {
@@ -91,7 +81,7 @@ const Subjects= () => {
                     <div className="line"></div>
                     <div className="notes-titles">
                         <ul>
-                          {subject.notes.map((note, i) => 
+                          {subject?.notes?.map((note, i) => 
                             <li key={note.id}>
                                <p>{note.title}</p> 
                             </li>

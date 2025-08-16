@@ -6,6 +6,24 @@ export const AuthContext = createContext();
 export const AuthProvider = ({children}) => {
   const [authToken, setAuthToken] = useState(localStorage.getItem('token'));
   const [authRefresh, setRefresh] = useState(localStorage.getItem('refresh'))
+  const  [user, setUser] = useState(null);
+
+
+  const getUser = async () => {
+    try {
+      const res = await api.get('auth/user')
+      setUser(res.data)
+    } catch (error) {
+      console.log("User not found", error.text)
+    }
+  }
+
+  useEffect(() => {
+    if (authToken) {
+      api.defaults.headers.common['Authorization'] = `Bearer ${authToken}`;
+      getUser();
+    }
+  }, [authToken]);
 
   const loginUser = async(username, password) => {
     try {
@@ -16,10 +34,12 @@ export const AuthProvider = ({children}) => {
       setAuthToken(token)
       setRefresh(refresh)
 
-      localStorage.setItem('refresh', refresh)
+      localStorage.setItem('refresh_token', refresh)
       localStorage.setItem('token', token)
 
       api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
+      await getUser();
 
       return true;
 
@@ -52,7 +72,7 @@ export const AuthProvider = ({children}) => {
 
 
    return (
-    <AuthContext.Provider value={{ authToken, loginUser, logoutUser, signUpUser}}>
+    <AuthContext.Provider value={{ authToken, loginUser, logoutUser, signUpUser, user}}>
       {children}
     </AuthContext.Provider>
   );

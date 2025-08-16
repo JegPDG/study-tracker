@@ -38,9 +38,9 @@ const Sidebar = () => {
         navigate('/note')
       },
     },
-    {text: 'Bookmarks',
-      icon: bookmarks
-    },
+    // {text: 'Bookmarks',
+    //   icon: bookmarks
+    // },
     {text: 'Flashcards',
       icon: flashcard
     },

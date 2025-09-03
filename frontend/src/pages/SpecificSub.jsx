@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 import arrowback from '../assets/back-arrow.svg'
 
 const SpecificSub = () => {
-  let { id } = useParams();
+  let { id } = useParams();   
   const [subject, setSubject] = useState([]);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false)

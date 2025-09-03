@@ -30,6 +30,4 @@ urlpatterns = [
     path('api/auth/', include('users.urls')),
     path('silk/', include('silk.urls', namespace='silk')),
     
-
-
 ]

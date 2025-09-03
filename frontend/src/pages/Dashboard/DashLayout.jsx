@@ -108,7 +108,8 @@ const DashLayout = () => {
         </div>
 
       </div>
-      <div className="calendar-card">Calendar...</div>
+
+      {/* <div className="calendar-card">Calendar...</div> */}
 
       <div className="notes-card">
         <div className="dash-titles">
@@ -133,7 +134,8 @@ const DashLayout = () => {
         </ul>
 
       </div>
-      <div className="assignments-card">
+
+      {/* <div className="assignments-card">
         <div className="dash-titles">
           <img src={assignment} alt="" />
           <p>Assignments</p>
@@ -156,7 +158,7 @@ const DashLayout = () => {
         </ul>
 
 
-      </div>
+      </div> */}
 
     </div>
     </>

@@ -23,7 +23,7 @@ const AllNotes = () => {
     keepPreviousData: true
   })
 
-
+  
 
   return (
     <>

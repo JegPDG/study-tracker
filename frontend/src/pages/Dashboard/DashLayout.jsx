@@ -10,8 +10,10 @@ import assignment from '../../assets/assignment.svg';
 import notes from '../../assets/notes.svg'
 
 import { useQuery } from '@tanstack/react-query'
+import { useNavigate } from 'react-router-dom';
 
 const DashLayout = () => {
+  const navigate = useNavigate()
 
   const {data: subjectData, isLoading, error} = useQuery({
     queryKey : ['dashSubjects'],
@@ -100,10 +102,12 @@ const DashLayout = () => {
             <p>Total Subjects</p>
             <p>{subjectData?.total_subjects}</p>
           </div>
-
-          <div className="add-sub">
-            <p>Add Subject</p>
-            <img src={plus_sign} alt="" />
+          
+          <div onClick={() => navigate('/subject/new')}>
+            <div className="add-sub">
+              <p>Add Subject</p>
+              <img src={plus_sign} alt="" />
+            </div>
           </div>
         </div>
 

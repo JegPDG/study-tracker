@@ -6,6 +6,12 @@ __pycache__/
 *.sqlite3
 *.log
 
+backend/.env
+.env
+.env.*
+backend/.env*
+
+
 # Django
 *.db
 *.pot

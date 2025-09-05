@@ -18,12 +18,12 @@ export const AuthProvider = ({children}) => {
     }
   }
 
-  useEffect(() => {
-    if (authToken) {
-      api.defaults.headers.common['Authorization'] = `Bearer ${authToken}`;
-      getUser();
-    }
-  }, [authToken]);
+  // useEffect(() => {
+  //   if (authToken) {
+  //     api.defaults.headers.common['Authorization'] = `Bearer ${authToken}`;
+  //     getUser();
+  //   }
+  // }, [authToken]);
 
   const loginUser = async(username, password) => {
     try {

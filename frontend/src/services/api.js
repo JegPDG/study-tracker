@@ -13,11 +13,12 @@ api.interceptors.request.use(
     // Always extract only the path
     const urlPath = new URL(config.url, api.defaults.baseURL).pathname;
 
-    const publicPaths = ['/auth/login/', '/auth/register/'];
-
+    const publicPaths = ['/auth/login/', '/auth/register/', ];
+    
     // Attach token ONLY if URL is NOT public
     if (!publicPaths.includes(urlPath) && token) {
       config.headers.Authorization = `Bearer ${token}`;
+      console.log('this ran')
     }
 
     return config;

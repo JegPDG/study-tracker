@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import './newnote.css'
+import './styles/newnote.css'
 import { AuthContext } from '../context/AuthContext'
 import { useNavigate, useParams } from 'react-router-dom';
 import api from '../services/api'

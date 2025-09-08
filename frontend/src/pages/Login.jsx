@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import './login.css';
+import './styles/login.css';
 import { AuthContext } from '../context/AuthContext';
 
 import glasses from '../assets/glasses-purple.svg';

@@ -1,5 +1,5 @@
 import React, { useContext, useState, useRef, useEffect } from 'react';
-import './navbar.css';
+import './styles/navbar.css';
 import logo_2 from '../assets/studbud-logo-2.svg';
 import search from '../assets/search-light.svg';
 import menu_nd from '../assets/menu-secondary.svg';

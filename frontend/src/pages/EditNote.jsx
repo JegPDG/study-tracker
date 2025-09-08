@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import './newnote.css'
+import './styles/newnote.css'
 import { useNavigate, useParams } from 'react-router-dom'
 import api from '../services/api'
 

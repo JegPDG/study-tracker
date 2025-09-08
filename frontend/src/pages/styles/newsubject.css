@@ -33,6 +33,12 @@
   align-items: baseline;
 }
 
+.new-sub-form{
+  display: flex;
+  align-items: baseline;
+  flex-direction: column;
+}
+
 .form-content p{
   margin-top: 24px;
 }

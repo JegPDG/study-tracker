@@ -116,6 +116,7 @@
   font-weight: bold;
   color: var(--color-tertiary);
   background-color: var(--bg-light);
+  cursor: pointer;
 }
 
 

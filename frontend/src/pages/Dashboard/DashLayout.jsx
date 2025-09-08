@@ -103,7 +103,9 @@ const DashLayout = () => {
             <p>{subjectData?.total_subjects}</p>
           </div>
           
-          <div onClick={() => navigate('/subject/new')}>
+          <div 
+            className='add-sub' 
+            onClick={() => navigate('/subject/new')}>
             <div className="add-sub">
               <p>Add Subject</p>
               <img src={plus_sign} alt="" />

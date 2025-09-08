@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import './allnotes.css'
+import './styles/allnotes.css'
 import api from '../services/api'
 import { useNavigate } from 'react-router-dom';
 import search_light from '../assets/search-light.svg';

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import api from '../services/api';
 import {AuthContext} from '../context/AuthContext';
-import './subjects.css'
+import './styles/subjects.css'
 import Sidebar from './Sidebar';
 import Navbar from './Navbar';
 import { useNavigate } from 'react-router-dom';

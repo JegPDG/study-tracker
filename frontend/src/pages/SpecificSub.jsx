@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import './specifisub.css'
+import './styles/specifisub.css'
 import api from '../services/api'
 import { AuthContext } from '../context/AuthContext'
 import { Link } from 'react-router-dom'

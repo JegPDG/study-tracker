@@ -1,5 +1,5 @@
 import React from 'react';
-import './sidebar.css';
+import './styles/sidebar.css';
 
 import add_purple from '../assets/add-secondary.svg';
 import dashboard from '../assets/dashboard.svg';

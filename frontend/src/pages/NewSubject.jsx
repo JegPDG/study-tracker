@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import './newsubject.css'
+import './styles/newsubject.css'
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import api from '../services/api';
@@ -33,20 +33,24 @@ const NewSubject = () => {
    <div className="main-new-subject">
       <div className="new-subject-page">
         <p className='sub-heading'>Create new subject</p>
+
         <div className="form-content">
-          <form onSubmit={submitNewSubject}>
-            <p className='sub-heading'>Subject title</p>
-            <input className="input-title-card"
-                  placeholder='New Subject title'
-                  type='text'
-                  onChange={(e) => setName(e.target.value)}
-                  >
-            </input>
+          <form className='new-sub-form' onSubmit={submitNewSubject}>
+
+              <p className='sub-heading'>Subject title</p>
+              <input className="input-title-card"
+                    placeholder='New Subject title'
+                    type='text'
+                    name="name"
+                    onChange={(e) => setName(e.target.value)}
+                    >
+              </input>
 
             <p className='sub-heading'>Description</p>
             <input className="input-description-card"
                   placeholder='Description'
                   type='text'
+                  name="description"
                   onChange={(e) => setDescription(e.target.value)}
 
               >
@@ -57,14 +61,7 @@ const NewSubject = () => {
             </div>
           </form>
 
-
-
-
-
         </div>
-
-
-
       </div>
    </div>
    </>

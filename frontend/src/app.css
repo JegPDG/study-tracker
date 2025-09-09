@@ -10,9 +10,9 @@
 .back-arrow{
   width: 40px;
   height: 40px;
-  border-radius: 50%;
+  border-radius: 5px;
   border-style: none;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 5px;
+  /* box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 5px; */
   display: flex;
   align-items: center;
   justify-content: center;

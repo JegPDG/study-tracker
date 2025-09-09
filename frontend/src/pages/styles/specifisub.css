@@ -18,11 +18,11 @@
 }
 
 .delete-button{
-  height: 30px;
+  height: 35px;
   padding: 0 20px;
   background-color: rgb(241, 162, 162);
   border: 2px solid rgb(206, 70, 70);
-  border-radius: 15px;
+  border-radius: 5px;
   font-family: var(--roboto);
   color: white;
   font-weight: bold;
@@ -87,6 +87,7 @@
   transform: scale(1.1);
 }
 
+
 .note-title{
   font-family: var(--big-fonts);
   font-size: 1.5rem;
@@ -112,12 +113,12 @@
 }
 
 .function-container button{
-  height: 30px;
+  height: 35px;
   box-sizing: border-box;
   padding: 0 10px;
   font-family: var(--roboto);
   font-weight: bold;
-  border-radius: 15px;
+  border-radius: 5px;
   border: 2px solid var(--color-tertiary) ;
   cursor: pointer;
 

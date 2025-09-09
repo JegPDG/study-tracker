@@ -32,14 +32,13 @@
 }
 
 .welcome-greet :nth-child(1){
-  font-family: var(--big-fonts);
   font-size: 3rem;
+  font-weight: bold;
   color: var(--color-primary);
 }
 
 .welcome-greet :nth-child(2){
   font-size: 1.5rem;
-  font-family: var(--small-fonts);
   color: var(--color-primary);
 }
 
@@ -71,13 +70,11 @@
 
 .login-message :nth-child(1){
   font-size: 2.7rem;
-  font-family: var(--big-fonts);
 
 }
 
 .login-message :nth-child(2){
   font-size: 1.2rem;
-  font-family: var(--small-fonts);
 
 }
 
@@ -88,13 +85,11 @@
 
 
 .password{
-  font-family: var(--big-fonts);
   color: var(--color-tertiary);
 }
 
 .form-inputs-name{
   margin-bottom: 24px;
-  font-family: var(--big-fonts);
   color: var(--color-tertiary);
 }
 
@@ -126,7 +121,6 @@ form{
   border-style: none;
   background-color: var(--color-text-light);
   color: var(--color-tertiary);
-  font-family: var(--big-fonts);
   font-size: 1.2rem;
   align-items: center;
   justify-content: center;

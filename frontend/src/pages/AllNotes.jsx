@@ -51,10 +51,10 @@ const AllNotes = () => {
             </div>
           </div>
 
-          <div className="subject-links">
+          {/* <div className="subject-links">
             <p>Recently added</p>
             <p>Recently deleted</p>
-          </div>
+          </div> */}
 
           <div className="allnote-container">
             <ul>

@@ -59,7 +59,7 @@
 }
 
 body {
-  font-family: var(--font-family);
+  font-family: var(--roboto);
   font-size: var(--font-size-base);
   line-height: var(--line-height-base);
   color: var(--color-text);

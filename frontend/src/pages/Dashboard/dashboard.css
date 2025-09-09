@@ -71,8 +71,8 @@
 }
 
 .subject-list{
-  font-family: var(--big-fonts);
-  font-size: 1.4rem;
+  font-size: 1rem;
+  font-weight: bold;
   color: var(--color-tertiary);
 
 }
@@ -124,7 +124,7 @@
 
 .note-ul{
   overflow-y: scroll;
-  height: 160px;
+  height: 200px;
 }
 
 .note-links{
@@ -138,8 +138,8 @@
   display: flex;
   justify-content: space-between;
   padding: 0 20px;
-  font-family: var(--big-fonts);
-  font-size: 1.4rem;
+  font-size: 1rem;
+  font-weight: bold;
   color: var(--color-tertiary);
 }
 

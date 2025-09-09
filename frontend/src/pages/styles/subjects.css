@@ -120,12 +120,12 @@
 }
 
 .function-containers button{
-  height: 30px;
+  height: 35px;
   box-sizing: border-box;
+  border-radius: 7px;
   padding: 0 10px;
   font-family: var(--roboto);
   font-weight: bold;
-  border-radius: 15px;
   border: 2px solid var(--color-tertiary) ;
   cursor: pointer;
   color: var(--color-secondary);

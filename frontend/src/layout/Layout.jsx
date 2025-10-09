@@ -1,17 +1,20 @@
 import React from 'react'
-import Navbar from './Navbar'
-import Sidebar from './Sidebar'
+import Navbar from '../pages/Navbar'
+import Sidebar from '../pages/Sidebar'
 import { Outlet } from 'react-router-dom'
-import './styles/layout.css'
+import '../pages/styles/layout.css'
+import NavigationBar from '../components/NavigationBar'
+import SideBar1 from '../components/SideBar1'
 
 const Layout = () => {
   return (
     <>
     <div className="layout">
-      <Navbar></Navbar>
-
+      {/* <Navbar></Navbar> */}
+      <NavigationBar></NavigationBar>
       <div className="main-content">
        <Sidebar></Sidebar>
+       <SideBar1></SideBar1>
        <div className="page-content">
         <Outlet></Outlet>
         

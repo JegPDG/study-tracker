@@ -7,7 +7,7 @@ const Subjects = lazy(() => import('./pages/Subjects'));
 const Sidebar = lazy(() => import('./pages/Sidebar'));
 const Navbar = lazy(() => import('./pages/Navbar'));
 const NewSubject = lazy(() => import('./pages/NewSubject'));
-const Layout = lazy(() => import('./pages/Layout'));
+const Layout = lazy(() => import('./layout/Layout'));
 const SpecificSub = lazy(() => import('./pages/SpecificSub'));
 const NewNote = lazy(() => import('./pages/NewNote'));
 const Note = lazy(() => import('./pages/Note'));
@@ -24,6 +24,7 @@ function App() {
           <Route path='/' element={<Login />} />
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<SignUp />} />
+
           <Route element={<Layout />}>
             <Route path='/subject' element={<Subjects />} />
             <Route path='/subject/new' element={<NewSubject />} />

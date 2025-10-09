@@ -1,5 +1,5 @@
 import React, { useContext, useState, useRef, useEffect } from 'react';
-import './styles/navbar.css';
+// import './styles/navbar.css';
 import logo_2 from '../assets/studbud-logo-2.svg';
 import search from '../assets/search-light.svg';
 import menu_nd from '../assets/menu-secondary.svg';
@@ -67,13 +67,14 @@ const Navbar = () => {
 
 
 
+
   return (
     <>
-      <div className="navbar-main">
-        <div className="logo-menu">
-          <div className="nav-logo">
+      <div className="h-[85px] bg-purple-2 flex items-center pl-4 pr-4 w-full">
+        <div className="logo-menu flex items-center justify-between w-full">
+          <div className="flex items-center gap-2 text-xl">
             <img src={logo_2} alt="" />
-            <p>STUDBUD</p>
+            <p className=''>STUDBUD</p>
 
             {/* <div className="search">
               <img src={search} alt="" />

@@ -1,0 +1,196 @@
+@import "tailwindcss";
+
+@layer theme, base, components, utilities;
+
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/preflight.css" layer(base);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+
+@layer base {
+  * {
+    font-family: "Zalando Sans", sans-serif;
+    /* background-color: #121212; */
+    color: #2C1F2C;
+  }
+
+  body{
+    background-color: #ECECEC;
+  }
+
+  .limited-text {
+    overflow: hidden;
+    display: -webkit-box; /* Required for -webkit-line-clamp */
+    -webkit-box-orient: vertical; /* Required for -webkit-line-clamp */
+    -webkit-line-clamp: 3; /* Limits to 3 lines */
+    line-clamp: 3; /* Standard property for modern browsers */
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge, and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .scrollbar-style::-webkit-scrollbar{
+    scrollbar-color: rgb(60, 59, 59) rgb(25, 25, 24);
+    scrollbar-width: thin;
+  }
+
+  .scrollbar-style {
+    scrollbar-color: rgb(60, 59, 59) rgb(25, 25, 24);
+    scrollbar-width: thin;
+  }
+
+  .gradient-bg{
+    background: #29251e;
+    background: linear-gradient(90deg, rgba(41, 37, 30, 1) 0%, rgba(7, 7, 10, 1) 100%);
+  }
+
+  /* Animation */
+    .steel-metallic {
+      background: 
+        /* Highlight sweep */
+        linear-gradient(
+          105deg,
+          transparent 40%,
+          rgba(255, 255, 255, 0.3) 47%,
+          rgba(255, 255, 255, 0.9) 50%,
+          rgba(255, 255, 255, 0.3) 53%,
+          transparent 60%
+        ),
+        /* Base metallic gradient */
+        radial-gradient(
+          ellipse at center,
+          #9a9a9a 0%,
+          #7a7a7a 25%,
+          #5a5a5a 50%,
+          #7a7a7a 75%,
+          #9a9a9a 100%
+        );
+      
+      background-size: 250% 100%, 100% 100%;
+      background-position: -150% 0, 0 0;
+      color: transparent;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      
+      animation: steel-shine 3s ease-in-out infinite;
+    }
+
+  @keyframes steel-shine {
+    0% {
+      background-position: -150% 0, 0 0;
+    }
+    50% {
+      background-position: 150% 0, 0 0;
+    }
+    100% {
+      background-position: -150% 0, 0 0;
+    }
+  } 
+
+  .fade-in-left {
+  animation: fadeInLeft 0.6s ease-out forwards;
+  }
+
+  .fade-in-right {
+    animation: fadeInRight 1s ease-out forwards;
+  }
+
+  .fade-in-up {
+    animation: fadeInUp 1s ease-out forwards;
+  }
+  .slide-in-left {
+    animation: slideInLeft 1s ease-out forwards;
+  }
+
+  .slide-in-left-hidden {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+
+  .slide-in-right {
+    animation: slideInRight 0.9s ease-out forwards;
+  }
+
+  .slide-in-right-hidden {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+
+  .slide-up {
+    animation: slideUp 1s ease-out forwards;
+  }
+
+  .slide-up-hidden {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+
+  /* Keyframes  */
+  @keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slideUp {
+  0% { opacity: 0; transform: translateY(50px); }
+  100% { opacity: 1; transform: translateY(0); }
+  }
+
+    /* Left to Right */
+  @keyframes fadeInLeft {
+    0% { opacity: 0; transform: translateX(-20px); }
+    100% { opacity: 1; transform: translateX(0); }
+  }
+
+  /* Right to Left */
+  @keyframes fadeInRight {
+    0% { opacity: 0; transform: translateX(20px); }
+    100% { opacity: 1; transform: translateX(0); }
+  }
+
+  /* Left to Right (more distance) */
+  @keyframes slideInLeft {
+    0% { opacity: 0; transform: translateX(-50px); }
+    100% { opacity: 1; transform: translateX(0); }
+  }
+
+  /* Right to Left (more distance) */
+  @keyframes slideInRight {
+    0% { opacity: 0; transform: translateX(50px); }
+    100% { opacity: 1; transform: translateX(0); }
+  }
+
+  /* Left to Right (full width) */
+  @keyframes slideInFromLeft {
+    0% { opacity: 0; transform: translateX(-100%); }
+    100% { opacity: 1; transform: translateX(0); }
+  }
+
+  /* Right to Left (full width) */
+  @keyframes slideInFromRight {
+    0% { opacity: 0; transform: translateX(100%); }
+    100% { opacity: 1; transform: translateX(0); }
+  }
+
+}
+
+@theme {
+  --color-purple-1: #514354;
+  --color-purple-2: #86728B;
+  --color-purple-3: #BAA7BF;
+  --color-white-1: #FEFAFF;
+  --color-white-2: #EAE2ED;
+  --color-dark-purple-text: #2C1F2C;
+
+
+  --color-white-grey: #EFEFEF;
+
+}

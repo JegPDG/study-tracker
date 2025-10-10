@@ -1,6 +1,7 @@
 import { lazy, Suspense } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './app.css';
+import NotesAll from './page/NotesAll';
 
 const Login = lazy(() => import('./pages/Login'));
 const Subjects = lazy(() => import('./pages/Subjects'));
@@ -32,7 +33,8 @@ function App() {
             <Route path='/subject/:id/newnote' element={<NewNote />} />
             <Route path='/note/:id' element={<Note />} />
             <Route path='/note/:id/edit' element={<EditNote />} />
-            <Route path='/note' element={<AllNotes />} />
+            {/* <Route path='/note' element={<AllNotes />} /> */}
+            <Route path='/note' element={<NotesAll />} />
             <Route path='/dashboard' element={<DashLayout />} />
           </Route>
         </Routes>

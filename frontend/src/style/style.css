@@ -15,7 +15,9 @@
   }
 
   body{
-    background-color: #ECECEC;
+    /* background-color: #ECECEC; */
+    background-color: #F3F3F3;
+
   }
 
   .limited-text {
@@ -49,6 +51,10 @@
   .gradient-bg{
     background: #29251e;
     background: linear-gradient(90deg, rgba(41, 37, 30, 1) 0%, rgba(7, 7, 10, 1) 100%);
+  }
+
+  .shadow-1{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
   }
 
   /* Animation */
@@ -188,6 +194,7 @@
   --color-purple-3: #BAA7BF;
   --color-white-1: #FEFAFF;
   --color-white-2: #EAE2ED;
+  --color-white-3: #ECECEC;
   --color-dark-purple-text: #2C1F2C;
 
 

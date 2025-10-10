@@ -1,5 +1,6 @@
 import React from 'react'
 import { logo } from '../assets/assets'
+import { Bars3BottomLeftIcon } from '@heroicons/react/24/solid'
 
 const NavigationBar = () => {
   return (
@@ -15,7 +16,7 @@ const NavigationBar = () => {
 
 
         <div>
-          bars
+          <Bars3BottomLeftIcon className='size-8' fill='white'></Bars3BottomLeftIcon>
         </div>
       </div>
     </div>

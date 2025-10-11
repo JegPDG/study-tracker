@@ -12,7 +12,7 @@ import { useDebounce } from 'use-debounce';
 
 const Subjects= () => {
   const [search, setSearch] = useState('');
-  const [debouncedSearch] = useDebounce(search, 300);
+  const [debouncedSearch] = useDebounce(search, 1000);
   const navigate = useNavigate();
 
   const getSubjects = async () => {

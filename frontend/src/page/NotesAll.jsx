@@ -28,7 +28,7 @@ const NotesAll = () => {
     <div className='pt-4 pl-8'>
       <div className=''>
         {/* Note title  */}
-        <p className='text-4xl font-bold'>NOTES</p>
+        <p className='text-4xl font-bold opacity-40'>NOTES</p>
         
         {/* Buttons container  */}
         <div className='mt-2 flex gap-2'>

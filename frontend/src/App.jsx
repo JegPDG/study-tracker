@@ -3,6 +3,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './app.css';
 import NotesAll from './page/NotesAll';
 import SubjectsAll from './page/SubjectsAll';
+import AddNewSubject from './components/modals/AddNewSubject';
+import SubjectDetail from './page/SubjectDetail';
+import NoteDetailView from './page/NoteDetailViewandEdit';
+import NoteDetailViewandEdit from './page/NoteDetailViewandEdit';
 
 const Login = lazy(() => import('./pages/Login'));
 const Subjects = lazy(() => import('./pages/Subjects'));
@@ -32,11 +36,22 @@ function App() {
             {/* <Route path='/subject' element={<Subjects />} /> */}
             <Route path='/subject' element={<SubjectsAll />}/>
 
+            {/* new  */}
+            {/* <Route path='/subject/new' element={<NewSubject />} /> */}
+            <Route path='/subject/add' element={<AddNewSubject />} />
 
-            <Route path='/subject/new' element={<NewSubject />} />
-            <Route path='/subject/:id' element={<SpecificSub />} />
+            {/* new  */}
+            {/* <Route path='/subject/:id' element={<SpecificSub />} /> */}
+            <Route path='/subject/:id' element={<SubjectDetail />} />
+
+
             <Route path='/subject/:id/newnote' element={<NewNote />} />
-            <Route path='/note/:id' element={<Note />} />
+
+            {/* new  */}
+            {/* <Route path='/note/:id' element={<Note />} /> */}
+            <Route path='/note/:id' element={<NoteDetailViewandEdit />} />
+            
+            
             <Route path='/note/:id/edit' element={<EditNote />} />
 
             {/* new  */}

@@ -46,8 +46,7 @@ const EditNote = () => {
     }
   }
 
-    const handleChange = (e) => {
-    
+  const handleChange = (e) => {
     const { name, value } = e.target;
     setNote((prev) => ({
       ...prev,
@@ -57,7 +56,6 @@ const EditNote = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     updateNote();
   }
 

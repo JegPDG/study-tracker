@@ -1,11 +1,16 @@
 import { ArrowLeftIcon } from '@heroicons/react/24/solid'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import api from '../services/api';
 import TextareaAutosize from 'react-textarea-autosize';
+import ReactQuill from 'react-quill-new';
+import 'react-quill-new/dist/quill.snow.css';
+
 
 const NoteDetailViewandEdit = () => {
+
+  //NOTE - handlecancel function
   const { subjectId, noteId } = useParams();
   const isEditMode = Boolean(noteId);
   const navigate = useNavigate();
@@ -17,7 +22,39 @@ const NoteDetailViewandEdit = () => {
   });
   const queryClient = useQueryClient();
 
-  // Create 
+
+
+  const quillModules = useMemo(() => ({
+    toolbar: [
+      [{ 'header': [1, 2, 3, false] }],
+      ['bold', 'italic', 'underline', 'strike'],
+      [{ 'color': [] }, { 'background': [] }],
+      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+      [{ 'indent': '-1'}, { 'indent': '+1' }],
+      [{ 'align': [] }],
+      ['blockquote', 'code-block'],
+      ['link', 'image'],
+      ['clean']
+    ],
+    clipboard: {
+      matchVisual: false
+    }
+  }), []);
+
+
+
+  const quillFormats = [
+    'header',
+    'bold', 'italic', 'underline', 'strike',
+    'color', 'background',
+    'list', 'bullet', 'indent',
+    'align',
+    'blockquote', 'code-block',
+    'link', 'image'
+  ];
+
+
+  // Create ------------------------------------------------------------------------------
   const createNoteMutation = useMutation({
   
     mutationFn: async (newData) => {
@@ -38,6 +75,8 @@ const NoteDetailViewandEdit = () => {
     }
   });
 
+
+
   // Getting the note Function
   const {data: noteDetailView, isLoading, error} = useQuery({
     queryKey: ['noteDetailView', noteId],
@@ -50,6 +89,8 @@ const NoteDetailViewandEdit = () => {
   });
 
   console.log(noteDetailView)
+
+
   // Delete
   const handleDelete = async () => {
     if(window.confirm('Do you want to delete this note?')){
@@ -65,6 +106,8 @@ const NoteDetailViewandEdit = () => {
     }
   };
 
+
+  
   // Handle back navigation
   const handleBack = () => {
     if (noteDetailView?.subject?.id) {
@@ -94,6 +137,8 @@ const NoteDetailViewandEdit = () => {
     }
   }, [isEditMode, noteDetailView]);
 
+
+  // Handle Change -----------------------------------
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUpdateData((prev) => ({
@@ -104,7 +149,18 @@ const NoteDetailViewandEdit = () => {
 
   console.log(error)
 
-  // Mutation for updating the note
+
+
+  // Handle Quill content change --------------------------------------
+  const handleQuillChange = (content) => {
+    setUpdateData((prev) => ({
+      ...prev,
+      content: content
+    }));
+  };
+
+
+  // Mutation for updating the note ---------------------------
   const updateNoteMutation = useMutation({
     mutationFn: async (data) => {
       const res = await api.patch(`/note/${noteId}/`, data);
@@ -120,6 +176,8 @@ const NoteDetailViewandEdit = () => {
     }
   });
 
+
+  // Handle Submit ---------------------------------------------------------------
   const handleSubmit = (e) => {
     e.preventDefault();
     
@@ -134,9 +192,14 @@ const NoteDetailViewandEdit = () => {
     }
   };
 
+
+
   // Logs -------------------------------------------------------------------------
   console.log("Note detail View", noteDetailView)
   // console.log("Note Detail Error GET:", error)
+
+
+  // Renders ----------------------------------------------------------------------
 
   if(isLoading) {
     return(
@@ -145,6 +208,17 @@ const NoteDetailViewandEdit = () => {
       </div>
     )
   }
+
+  if (isEditMode && error) {
+    return (
+      <div className='pt-4 pl-8'>
+        <div className='flex items-center justify-center h-64'>
+          <p className='text-lg text-red-500'>Error loading note: {error.message}</p>
+        </div>
+      </div>
+    );
+  }
+
 
   return (
     <div className='pt-4 pl-8'>
@@ -157,9 +231,11 @@ const NoteDetailViewandEdit = () => {
         </div>
       </div>
 
-      <div className='mt-4 flex gap-4'>
-        <p className='font-medium opacity-60'>{noteDetailView?.subject?.name} &#8226; {noteDetailView?.updated_at}</p>
-      </div>
+      {isEditMode && noteDetailView && (
+        <div className='mt-4 flex gap-4'>
+          <p className='font-medium opacity-60'>{noteDetailView?.subject?.name} &#8226; {new Date(noteDetailView?.updated_at).toLocaleDateString() }</p>
+        </div>
+      )}
 
       <div className='mt-2'>
         {editForm ? (
@@ -178,13 +254,18 @@ const NoteDetailViewandEdit = () => {
       }
       </div>
 
+
+      {/* Action Buttons  */}
       <div className='mt-8 flex gap-2'>
         {editForm ? (
+        
           <button
             onClick={handleSubmit}
             disabled={updateNoteMutation.isLoading}
             className='bg-purple-1 pt-2 pb-2 pr-4 pl-4 text-white-1 rounded-sm cursor-pointer hover:bg-purple-1/80'>
-            Save
+            {updateNoteMutation.isPending || createNoteMutation.isPending 
+              ? 'Saving...' 
+              : isEditMode ? 'Save' : 'Create'}
           </button>
         ) : (
           <button
@@ -205,13 +286,24 @@ const NoteDetailViewandEdit = () => {
 
       {editForm ? (
         <div className='mr-4'>
-          <TextareaAutosize
+          <ReactQuill
+            name="content"
+            theme="snow"
+            value={updateData.content}
+            onChange={handleQuillChange}
+            modules={quillModules}
+            formats={quillFormats}
+            placeholder="Start writing your note..."
+            className="custom-quill-editor bg-white rounded-sm mt-4"
+          />
+
+          {/* <TextareaAutosize
             value={updateData.content}
             onChange={handleChange}
             name="content"
             placeholder='Type something...' 
             className='min-h-[350px] bg-white-3 mt-4 rounded-sm p-4 w-full '
-          ></TextareaAutosize>
+          ></TextareaAutosize> */}
           {/* <textarea 
             value={updateData.content}
             onChange={handleChange}
@@ -224,7 +316,14 @@ const NoteDetailViewandEdit = () => {
       :
       (
         <div className='min-h-[350px] bg-white-3 mt-4 mr-4 rounded-sm p-4 flex gap-4 flex-wrap'>
-          {noteDetailView?.content}
+          {noteDetailView?.content ? (
+            <div 
+              className='prose max-w-none'
+              dangerouslySetInnerHTML={{ __html: noteDetailView.content }}
+            />
+          ) : (
+            <p className='text-gray-400 italic'>No content yet</p>
+          )}
         </div>
       )
     }

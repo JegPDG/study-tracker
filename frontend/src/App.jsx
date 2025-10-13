@@ -27,38 +27,29 @@ function App() {
     <Router>
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
+          {/* Auth */}
           <Route path='/' element={<Login />} />
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<SignUp />} />
 
+          {/* Main Layout */}
           <Route element={<Layout />}>
-            {/* new  */}
-            {/* <Route path='/subject' element={<Subjects />} /> */}
-            <Route path='/subject' element={<SubjectsAll />}/>
-
-            {/* new  */}
-            {/* <Route path='/subject/new' element={<NewSubject />} /> */}
-            <Route path='/subject/add' element={<AddNewSubject />} />
-
-            {/* new  */}
-            {/* <Route path='/subject/:id' element={<SpecificSub />} /> */}
-            <Route path='/subject/:id' element={<SubjectDetail />} />
-
-
-            <Route path='/subject/:id/newnote' element={<NewNote />} />
-
-            {/* new  */}
-            {/* <Route path='/note/:id' element={<Note />} /> */}
-            <Route path='/note/:id' element={<NoteDetailViewandEdit />} />
-            
-            
-            <Route path='/note/:id/edit' element={<EditNote />} />
-
-            {/* new  */}
-            {/* <Route path='/note' element={<AllNotes />} /> */}
-            <Route path='/note' element={<NotesAll />} /> 
-
+            {/* Dashboard */}
             <Route path='/dashboard' element={<DashLayout />} />
+
+            {/* Subjects */}
+            <Route path='/subjects' element={<SubjectsAll />} />
+            <Route path='/subjects/add' element={<AddNewSubject />} />
+            <Route path='/subjects/:subjectId' element={<SubjectDetail />} />
+
+            {/* Notes for a Subject */}
+            <Route path='/subjects/:subjectId/notes/new' element={<NoteDetailViewandEdit />} />
+            <Route path='/subjects/:subjectId/notes/:noteId' element={<NoteDetailViewandEdit />} />
+
+            {/* All Notes */}
+            <Route path='/notes' element={<NotesAll />} />
+            <Route path='/notes/:noteId' element={<NoteDetailViewandEdit />} />
+            <Route path='/notes/:noteId/edit' element={<EditNote />} />
           </Route>
         </Routes>
       </Suspense>

@@ -3,13 +3,14 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import api from '../services/api';
+import TextareaAutosize from 'react-textarea-autosize';
 
 const NoteDetailViewandEdit = () => {
-  const { id } = useParams();
-  const isEditable = Boolean(id);
+  const { subjectId, noteId } = useParams();
+  const isEditMode = Boolean(noteId);
   const navigate = useNavigate();
   
-  const [editForm, setEditForm] = useState(false)
+  const [editForm, setEditForm] = useState(!isEditMode)
   const [updateData, setUpdateData] = useState({
     title: '',
     content: ''
@@ -18,61 +19,81 @@ const NoteDetailViewandEdit = () => {
 
   // Create 
   const createNoteMutation = useMutation({
+  
     mutationFn: async (newData) => {
-      const res = await api.post('/note/', newData);
+      const dataWithSubject = {
+        ...newData, 
+        subject_id: subjectId
+      }
+
+      const res = await api.post('/note/', dataWithSubject);
       return res.data;
     },
     onSuccess: (data) => {
-      navigate(`/note/${data.id}`); // Redirect to the new note
+      navigate(`/subjects/${subjectId}/notes/${data.id}`);; // Redirect to the new note
     },
     onError: (error) => {
       console.log('Failed to create', error);
+      alert("")
     }
   });
 
-  useEffect(() => {
-    if (isEditMode && noteDetailView) {
-      setUpdateData({
-        title: noteDetailView.title || '',
-        content: noteDetailView.content || ''
-      });
-    } else {
-      setUpdateData({ title: '', content: '' });
-    }
-  }, [isEditMode, noteDetailView]);
-
   // Getting the note Function
-  const getNote = async () => {
-    const response = await api.get(`note/${id}`)
-    return response.data
-  }
-  // Getting the note API
-  const {data: noteDetailView = [], isLoading, error} = useQuery({
-    queryKey: ['noteDetailView'],
-    queryFn: getNote,
-    keepPreviousData: true
-  })
+  const {data: noteDetailView, isLoading, error} = useQuery({
+    queryKey: ['noteDetailView', noteId],
+    queryFn: async () => {
+      const response = await api.get(`note/${noteId}`);
+      return response.data;
+    },
+    enabled: isEditMode, // Only fetch when noteId exists
+    staleTime: 1000 * 60 * 5, // Optional: cache for 5 minutes
+  });
 
+  console.log(noteDetailView)
   // Delete
   const handleDelete = async () => {
-    if(window.confirm('Do you want to delete the subject?')){
+    if(window.confirm('Do you want to delete this note?')){
       try {
-      await api.delete(`/note/${id}/`)
-      navigate(`/subject/${noteDetailView?.subject.id}`)
-      console.log('Note deleted')
+        await api.delete(`/note/${noteId}/`); // Fixed: was 'id', now 'noteId'
+        navigate(`/subjects/${noteDetailView?.subject?.id || subjectId}`);
+        console.log('Note deleted');
       } catch (error) {
-        console.log('Unable to delete', error.text)
+        console.log('Unable to delete', error);
       }
-      
-    } else{
-      alert("Subject not deleted")
+    } else {
+      alert("Note not deleted");
     }
-  }
- 
+  };
+
+  // Handle back navigation
+  const handleBack = () => {
+    if (noteDetailView?.subject?.id) {
+      navigate(`/subjects/${noteDetailView.subject.id}`);
+    } else if (subjectId) {
+      navigate(`/subjects/${subjectId}`);
+    } else {
+      navigate(-1);
+    }
+  };
 
 
 
   // EditNote section ----------------------------------------------------------
+
+  // Single useEffect to handle form initialization
+  useEffect(() => {
+    if (isEditMode && noteDetailView) {
+      // In edit mode, populate from fetched data
+      setUpdateData({
+        title: noteDetailView.title || '',
+        content: noteDetailView.content || ''
+      });
+    } else if (!isEditMode) {
+      // In create mode, keep form empty
+      setUpdateData({ title: '', content: '' });
+    }
+  }, [isEditMode, noteDetailView]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUpdateData((prev) => ({
@@ -81,19 +102,12 @@ const NoteDetailViewandEdit = () => {
     }));
   };
 
-  useEffect(() => {
-    if (noteDetailView) {
-      setUpdateData({
-        title: noteDetailView.title || '',
-        content: noteDetailView.content || ''
-      });
-    }
-  }, [noteDetailView]);
+  console.log(error)
 
   // Mutation for updating the note
   const updateNoteMutation = useMutation({
-    mutationFn: async (updateData) => {
-      const res = await api.patch(`/note/${id}/`, updateData);
+    mutationFn: async (data) => {
+      const res = await api.patch(`/note/${noteId}/`, data);
       return res.data;
     },
     onSuccess: () => {
@@ -108,6 +122,11 @@ const NoteDetailViewandEdit = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    if (!updateData.title.trim() || !updateData.content.trim()) {
+      alert('Please fill in both the title and content before saving.');
+      return;
+    }
     if (isEditMode) {
       updateNoteMutation.mutate(updateData);
     } else {
@@ -119,12 +138,21 @@ const NoteDetailViewandEdit = () => {
   console.log("Note detail View", noteDetailView)
   // console.log("Note Detail Error GET:", error)
 
+  if(isLoading) {
+    return(
+      <div className='loading'>
+        <span className='loader'></span>
+      </div>
+    )
+  }
 
   return (
     <div className='pt-4 pl-8'>
 
       <div className='flex flex-row justify-between '>
-        <div className='hover:bg-purple-3 bg-purple-2 inline-block p-2 rounded-sm'>
+        <div 
+          onClick={handleBack}
+          className='hover:bg-purple-3 bg-purple-2 inline-block p-2 rounded-sm'>
           <ArrowLeftIcon className='size-6' fill='white'></ArrowLeftIcon>
         </div>
       </div>
@@ -165,7 +193,7 @@ const NoteDetailViewandEdit = () => {
             Edit
           </button>
         )}
-        
+
         {isEditMode && (
           <button
             onClick={handleDelete}
@@ -177,12 +205,20 @@ const NoteDetailViewandEdit = () => {
 
       {editForm ? (
         <div className='mr-4'>
-          <textarea 
+          <TextareaAutosize
             value={updateData.content}
             onChange={handleChange}
-            name="content" 
-            className='min-h-[350px] bg-white-3 mt-4 rounded-sm p-4 w-full resize-none'
-            ></textarea>
+            name="content"
+            placeholder='Type something...' 
+            className='min-h-[350px] bg-white-3 mt-4 rounded-sm p-4 w-full '
+          ></TextareaAutosize>
+          {/* <textarea 
+            value={updateData.content}
+            onChange={handleChange}
+            name="content"
+            placeholder='Type something...' 
+            className='min-h-[350px] bg-white-3 mt-4 rounded-sm p-4 w-full '
+            ></textarea> */}
         </div>
       )
       :

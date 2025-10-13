@@ -7,11 +7,11 @@ import NoteCard from '../components/NoteCard'
 
 
 const SubjectDetail = () => {
-  const { id } = useParams();
+  const { subjectId } = useParams();
   const navigate = useNavigate();
 
   const getSubjDetail = async () => {
-    const response = await api.get(`/subject/${id}`)
+    const response = await api.get(`/subject/${subjectId}`)
     return response.data
   }
 
@@ -58,7 +58,7 @@ const SubjectDetail = () => {
         <div className='h-[2px] bg-purple-1/40 mt-9 mr-4'></div>
 
         <div className='mt-2'>
-          <p className='text-xl font-medium'>NOTES</p>
+          <p className='text-xl font-medium opacity-70'>NOTES</p>
 
           {/* Buttons container  */}
           {/* Will probs turn into component  */}
@@ -86,7 +86,7 @@ const SubjectDetail = () => {
             </div>
 
             <div 
-              onClick={() => navigate('/note/:id')}
+              onClick={() => navigate(`/subjects/${subjectDetail?.id}/notes/new`)}
               className='flex gap-2 hover:bg-purple-2 bg-purple-1 pt-2 pb-2 pl-4 pr-4 rounded-sm cursor-pointer '>
               <PlusIcon className='size-6' fill='white'></PlusIcon>
               <p className='text-white-1'>Add New Note</p>

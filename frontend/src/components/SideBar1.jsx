@@ -16,13 +16,13 @@ const SideBar1 = () => {
       {text: 'Subjects',
         icon: BookOpenIcon,
         goto: () => {
-          navigate('/subject')
+          navigate('/subjects')
         },
       },
       {text: 'Notes',
         icon: PencilSquareIcon,
         goto: () => {
-          navigate('/note')
+          navigate('/notes')
         },
       },
       // {text: 'Bookmarks',

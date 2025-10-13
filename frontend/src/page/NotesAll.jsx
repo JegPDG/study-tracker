@@ -65,6 +65,7 @@ const NotesAll = () => {
                 key={i} 
                 >
                 <NoteCard
+                  noteID={note.id}
                   updated_at={note.updated_at}
                   title={note.title}
                   content={note.content}

@@ -34,7 +34,7 @@ class SubjectDashboardViewSet(ListAPIView):
     })
 
 class NoteDashboardView(ListAPIView):
-  serializer_class = NoteDashBoardSerializer
+  serializer_class = NoteSerializer
   permission_classes = [permissions.IsAuthenticated]
 
   def get_queryset(self):

@@ -7,6 +7,7 @@ import AddNewSubject from './components/modals/AddNewSubject';
 import SubjectDetail from './page/SubjectDetail';
 import NoteDetailView from './page/NoteDetailViewandEdit';
 import NoteDetailViewandEdit from './page/NoteDetailViewandEdit';
+import Overview from './page/Overview';
 
 const Login = lazy(() => import('./pages/Login'));
 const Subjects = lazy(() => import('./pages/Subjects'));
@@ -36,6 +37,8 @@ function App() {
           <Route element={<Layout />}>
             {/* Dashboard */}
             <Route path='/dashboard' element={<DashLayout />} />
+            <Route path='/overview' element={<Overview />} />
+
 
             {/* Subjects */}
             <Route path='/subjects' element={<SubjectsAll />} />

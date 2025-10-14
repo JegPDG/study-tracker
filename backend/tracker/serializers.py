@@ -16,7 +16,7 @@ class SubjectDashboardSerializer(serializers.ModelSerializer):
 class NoteDashBoardSerializer(serializers.ModelSerializer):
   class Meta:
     model = Notes
-    fields = ['id', 'title', 'updated_at']
+    fields = ['id', 'title', 'updated_at', ]
 
 
 class NoteSerializer(serializers.ModelSerializer):

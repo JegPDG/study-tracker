@@ -1,5 +1,5 @@
 import { ArrowDownLeftIcon, ArrowLeftIcon, MagnifyingGlassIcon, PlusIcon } from '@heroicons/react/24/solid'
-import { useQuery } from '@tanstack/react-query'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import React, { useState } from 'react'
 import api from '../services/api'
 import { useNavigate, useParams } from 'react-router-dom'
@@ -9,6 +9,7 @@ import NoteCard from '../components/NoteCard'
 const SubjectDetail = () => {
   const { subjectId } = useParams();
   const navigate = useNavigate();
+  const queryClient = useQueryClient(); 
 
   const getSubjDetail = async () => {
     const response = await api.get(`/subject/${subjectId}`)
@@ -30,18 +31,58 @@ const SubjectDetail = () => {
     {text: 'Recently deleted'},
   ]
 
+  // Delete
+  const deleteSubjectMutation = useMutation({
+    mutationFn: async (id) => {
+      await api.delete(`/subject/${id}/`);
+    },
+    onSuccess: () => {
+      // Invalidate ALL related queries
+      queryClient.invalidateQueries(['subjects']);
+      queryClient.invalidateQueries(['notes']);
+      queryClient.invalidateQueries(['recentlyOpenedNotes']);
+      
+      navigate('/subjects/');
+    },
+    onError: (error) => {
+      console.error('Delete failed:', error);
+      alert('Failed to delete subject');
+    }
+  });
+
+  const handleDelete = () => {
+    const message = 'Delete this subject and ALL its notes? This cannot be undone.';
+    if (window.confirm(message)) {
+      deleteSubjectMutation.mutate(subjectId);
+    }
+  };
+
+    
+    // Handle back navigation
+    const handleBack = () => {
+      if (subjectId) {
+        navigate(`/subjects/`);
+      } else {
+        navigate(-1);
+      }
+    };
+
+  
 
   return (
       <div className='pt-4 pl-8'>
 
         {/* Delete and Back buttons  */}
         <div className='flex flex-row justify-between '>
-          <div className='hover:bg-purple-3 bg-purple-2 inline-block p-2 rounded-sm'>
+          <div 
+            onClick={handleBack}
+            className='hover:bg-purple-3 bg-purple-2 inline-block p-2 rounded-sm'>
             <ArrowLeftIcon className='size-6' fill='white'></ArrowLeftIcon>
           </div>
 
           <div className='mr-4'>
-            <button  
+            <button 
+              onClick={handleDelete} 
               className='bg-red-400 hover:bg-red-500 box-border  border-red-700 p-2 rounded-sm text-white-1 '>
                 Delete
             </button>

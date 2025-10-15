@@ -8,7 +8,7 @@ const NoteCard = (props) => {
   return (
     <div 
       onClick={() => navigate(`/notes/${noteID}`)}
-      className='bg-white-1 size-60 p-4 shadow-1 overflow-hidden transition-transform duration-300 hover:scale-105'>
+      className='bg-white-1 size-60 p-4 shadow-1 overflow-hidden transition-transform duration-300 hover:scale-105 shrink-0'>
       <p className='text-sm text-dark-purple-text/60'>{updated_at}</p>
       <p className='text-sm text-dark-purple-text/60 font-medium'>{subject}</p>
 

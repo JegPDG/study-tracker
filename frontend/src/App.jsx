@@ -36,7 +36,7 @@ function App() {
           {/* Main Layout */}
           <Route element={<Layout />}>
             {/* Dashboard */}
-            <Route path='/dashboard' element={<DashLayout />} />
+            {/* <Route path='/dashboard' element={<DashLayout />} /> */}
             <Route path='/overview' element={<Overview />} />
 
 

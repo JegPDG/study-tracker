@@ -20,7 +20,7 @@ class SubjectDashboardViewSet(ListAPIView):
   def get_queryset(self):
     user = self.request.user
     return Subject.objects.filter(user=user).annotate(
-      note_count=Count('notes')).order_by('-created_at')
+      note_count=Count('notes')).order_by('-created_at')[:6]
 
   def list(self, request, *args, **kwargs):
     queryset = self.get_queryset()
@@ -39,7 +39,18 @@ class NoteDashboardView(ListAPIView):
 
   def get_queryset(self):
     user = self.request.user
-    return Notes.objects.filter(subject__user=user).order_by('-updated_at')[:10]
+    return Notes.objects.filter(subject__user=user).order_by('-updated_at')[:8]
+  
+  def list(self, request, *args, **kwargs):
+    queryset = self.get_queryset()
+    serializer = self.get_serializer(queryset, many=True)
+
+    total_notes = Notes.objects.filter(subject__user=request.user).count()
+
+    return Response({
+      'totale_notes' : total_notes,
+      'notes': serializer.data,
+    })
 
 class SubjectsViewSet(viewsets.ModelViewSet):
   queryset = Subject.objects.none()

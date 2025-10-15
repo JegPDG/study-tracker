@@ -66,7 +66,7 @@ const SubjectsAll = () => {
           <div className='mt-2 flex gap-2'>
             {buttonLinks.map((button,i) =>{
               return(
-                <button className='bg-purple-1 pt-2 pb-2 pr-4 pl-4 text-white-1 rounded-sm cursor-pointer hover:bg-purple-1/80 '>
+                <button key={i} className='bg-purple-1 pt-2 pb-2 pr-4 pl-4 text-white-1 rounded-sm cursor-pointer hover:bg-purple-1/80 '>
                   {button.text}
                 </button>
               )}

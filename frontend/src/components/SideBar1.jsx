@@ -10,7 +10,7 @@ const SideBar1 = () => {
       {text: 'Overview',
         icon: ChartBarIcon,
         goto: () => {
-          navigate('/dashboard')
+          navigate('/overview')
         },
       }, 
       {text: 'Subjects',
@@ -56,18 +56,16 @@ const SideBar1 = () => {
           })}
         </div>
 
-        
-
         {/* bottom elements  */}
         <div>
           <div>
             <img src={illustrations.glass_and_leaf} alt="" />
           </div>
 
-          <div 
+          {/* <div 
               className='hover:bg-white/20 cursor-pointer h-10 flex flex-row items-center box-border p-2 rounded-sm'>
               <p className='font-bold text-white-1'>Hello</p>
-          </div>
+          </div> */}
 
         </div>
       </div>

@@ -63,7 +63,7 @@ const SubjectsAll = () => {
           <p className='text-4xl font-bold opacity-40'>SUBJECTS</p>
           
           {/* Buttons container  */}
-          <div className='mt-2 flex gap-2'>
+          {/* <div className='mt-2 flex gap-2'>
             {buttonLinks.map((button,i) =>{
               return(
                 <button key={i} className='bg-purple-1 pt-2 pb-2 pr-4 pl-4 text-white-1 rounded-sm cursor-pointer hover:bg-purple-1/80 '>
@@ -71,18 +71,20 @@ const SubjectsAll = () => {
                 </button>
               )}
             )}
-          </div>
+          </div> */}
 
           {/* Search Container  */}
           <div className='mt-4 flex flex-row items-center gap-4'>
-            <div className='bg-purple-1/10  pl-4 rounded-sm w-[350px] flex flex-row items-center'>
-              <MagnifyingGlassIcon className='size-6'></MagnifyingGlassIcon>
+            <div className='relative w-[300px] bg-purple-2/20 rounded-md'>
+              <div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>
+                <MagnifyingGlassIcon className='size-6'></MagnifyingGlassIcon>
+              </div>
               <input 
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 type="text" 
                 placeholder='Search note...' 
-                className='w-full pt-2 pb-2 pl-2' />
+                className='w-full pt-2 pb-2 block pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent' />
             </div>
 
             <div 

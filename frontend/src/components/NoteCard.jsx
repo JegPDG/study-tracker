@@ -14,7 +14,12 @@ const NoteCard = (props) => {
 
       <p className='mt-2 text-xl/tight font-bold limited-text'>{title}</p>
 
-      <p className='text-sm mt-2 limited-note-text'>{content}</p>
+      {/* <p className='text-sm mt-2 limited-note-text'>{content}</p> */}
+      <div 
+        className='text-sm mt-2 limited-note-text'
+        dangerouslySetInnerHTML={{ __html: content }}
+        >
+      </div>
 
     </div>
   )

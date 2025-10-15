@@ -42,7 +42,7 @@ const Overview = () => {
         
         {/* Left Side */}
         <div className="flex-1 px-12 overflow-hidden">
-          <p className="text-4xl font-medium opacity-70">Welcome, <span className='font-bold text-purple-2'>{user.username}</span>!</p>
+          <p className="text-4xl font-medium opacity-70">Welcome, <span className='font-bold text-purple-2'>{user?.username}</span>!</p>
 
           {/* Overview */}
           <div className="mt-8">
@@ -69,7 +69,7 @@ const Overview = () => {
           </div>
 
           {/* Recently Opened Notes */}
-          <div className="mt-8">
+          <div className="mt-6">
             <p className="text-xl font-medium">Recent Notes</p>
             <div className="w-full overflow-x-scroll mt-4">
               <div className="flex flex-nowrap space-x-4 p-2">
@@ -89,7 +89,7 @@ const Overview = () => {
           </div>
 
           {/* Recently Opened Subjects */}
-          <div className="mt-8">
+          <div className="mt-6">
             <p className="text-xl font-medium">Recent Subjects</p>
             <div className="w-full overflow-x-scroll mt-4">
               <div className="flex flex-nowrap space-x-4 p-2">

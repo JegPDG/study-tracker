@@ -3,7 +3,7 @@ import { MagnifyingGlassIcon, PlusIcon } from '@heroicons/react/24/solid'
 import NoteCard from '../components/NoteCard'
 import { useNavigate } from 'react-router-dom';
 import { useDebounce } from 'use-debounce';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import api from '../services/api';
 import SubjectCard from '../components/SubjectCard';
 import AddNewSubject from '../components/modals/AddNewSubject';
@@ -13,6 +13,7 @@ const SubjectsAll = () => {
   const [search, setSearch] = useState("")
   const [debouncedSearch] = useDebounce(search, 1000);
   const [newsubject, setNewSubject] = useState(false);
+  const queryClient = useQueryClient()
 
   const buttonLinks = [
     {text: 'All'},

@@ -3,6 +3,7 @@ import React, { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import api from '../../services/api';
+import { useQueryClient } from '@tanstack/react-query';
 
 const AddNewSubject = (props) => {
   // Placed in SubjectsAll.jsx 
@@ -14,6 +15,7 @@ const AddNewSubject = (props) => {
   const [description, setDescription] = useState('');
   const {authToken} = useContext(AuthContext); 
   const navigate = useNavigate();
+  const queryClient = useQueryClient()
 
   const submitNewSubject = async(e) => {
     e.preventDefault();
@@ -27,6 +29,8 @@ const AddNewSubject = (props) => {
       console.log(error.response?.data)
       alert("Error in submitting...")
       console.log('error in creating subject')
+    } finally {
+      queryClient.invalidateQueries(['subjects']);
     }
 
   }

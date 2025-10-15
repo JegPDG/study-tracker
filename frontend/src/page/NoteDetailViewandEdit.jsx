@@ -240,7 +240,7 @@ const NoteDetailViewandEdit = () => {
       <div className='mt-2'>
         {editForm ? (
           <input type="text"
-            className='text-4xl font-medium' 
+            className='text-4xl font-medium w-full bg-white-1 p-2 focus:outline-none focus:ring-1 focus:ring-purple-500/20 focus:border-transparent' 
             placeholder='Note Title'
             name='title'
             value={updateData.title}

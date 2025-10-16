@@ -17,13 +17,15 @@ const AllNotes = () => {
     return res.data
   }
 
+
+
   const {data : notes = [], isLoading, error} = useQuery({
     queryKey: ["notes", debouncedSearch],
     queryFn: getNotes,
     keepPreviousData: true
   })
 
-  
+  console.log(notes)
 
   return (
     <>

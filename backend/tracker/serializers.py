@@ -6,17 +6,12 @@ class SubjectPreviewSerializer(serializers.ModelSerializer):
     model= Subject
     fields = ['id', 'name']
 
-class SubjectDashboardSerializer(serializers.ModelSerializer):
-  note_count = serializers.IntegerField()
 
-  class Meta:
-    model=Subject
-    fields = ['id', 'name', 'note_count', 'created_at']
 
 class NoteDashBoardSerializer(serializers.ModelSerializer):
   class Meta:
     model = Notes
-    fields = ['id', 'title', 'updated_at']
+    fields = ['id', 'title', 'updated_at', ]
 
 
 class NoteSerializer(serializers.ModelSerializer):
@@ -36,6 +31,15 @@ class NotePreviewSerializer(serializers.ModelSerializer):
   class Meta:
     model = Notes
     fields = ['id', 'title', 'created_at', 'content' ]
+
+
+class SubjectDashboardSerializer(serializers.ModelSerializer):
+  note_count = serializers.IntegerField()
+  notes = NotePreviewSerializer(many=True, read_only=True)
+
+  class Meta:
+    model=Subject
+    fields = ['id', 'name', 'note_count', 'created_at', 'notes', 'description']
 
 class SubjectSerializer(serializers.ModelSerializer):
   notes = NotePreviewSerializer(many=True, read_only=True)

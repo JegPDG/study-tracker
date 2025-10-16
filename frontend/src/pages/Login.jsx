@@ -20,7 +20,7 @@ const Login = () => {
     const success = await loginUser(username, password);
 
     if (success){
-      navigate('/dashboard');
+      navigate('/overview');
     } else {
       setError('Login failed. Please check your credentials or sign up first.');
     }

@@ -1,0 +1,516 @@
+@import "tailwindcss";
+
+@layer theme, base, components, utilities;
+
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/preflight.css" layer(base);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+@import 'react-quill-new/dist/quill.snow.css';
+
+@theme {
+  --color-purple-1: #514354;
+  --color-purple-2: #86728B;
+  --color-purple-3: #BAA7BF;
+  --color-white-1: #FEFAFF;
+  --color-white-2: #EAE2ED;
+  --color-white-3: #ECECEC;
+  --color-dark-purple-text: #2C1F2C;
+
+  --color-white-grey: #EFEFEF;
+
+}
+
+@layer base {
+  * {
+    font-family: "Zalando Sans", sans-serif;
+    /* background-color: #121212; */
+    color: #2C1F2C;
+  }
+
+  body{
+    /* background-color: #ECECEC; */
+    background-color: #F3F3F3;
+
+  }
+
+  .limited-text {
+    overflow: hidden;
+    display: -webkit-box; /* Required for -webkit-line-clamp */
+    -webkit-box-orient: vertical; /* Required for -webkit-line-clamp */
+    -webkit-line-clamp: 3; /* Limits to 3 lines */
+    line-clamp: 3; /* Standard property for modern browsers */
+  }
+
+  .limited-note-text {
+    overflow: hidden;
+    display: -webkit-box; /* Required for -webkit-line-clamp */
+    -webkit-box-orient: vertical; /* Required for -webkit-line-clamp */
+    -webkit-line-clamp: 6; /* Limits to 3 lines */
+    line-clamp: 6; /* Standard property for modern browsers */
+  }
+
+  /* index.css or globals.css */
+  .text-gradient-1 {
+    background: linear-gradient(
+      90deg,
+      rgba(134, 114, 139, 1) 0%,
+      rgba(133, 35, 153, 1) 45%,
+      rgba(190, 69, 214, 1) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
+
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge, and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .scrollbar-style::-webkit-scrollbar{
+    scrollbar-color: rgb(60, 59, 59) rgb(25, 25, 24);
+    scrollbar-width: thin;
+  }
+
+  .scrollbar-style {
+    scrollbar-color: rgb(60, 59, 59) rgb(25, 25, 24);
+    scrollbar-width: thin;
+  }
+
+  .gradient-bg{
+    background: #29251e;
+    background: linear-gradient(90deg, rgba(41, 37, 30, 1) 0%, rgba(7, 7, 10, 1) 100%);
+  }
+
+  .shadow-1{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  }
+  .shadow-2{
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  
+/* Laoder css */
+.loading{
+  display: flex;
+  height: 80vh;
+  width: 100%;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.loader {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 6rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+  .loader:before,
+  .loader:after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    animation: pulsOut 1.8s ease-in-out infinite;
+    filter: drop-shadow(0 0 1rem rgba(154, 44, 218, 0.75));
+  }
+  .loader:before {
+    width: 100%;
+    padding-bottom: 100%;
+    box-shadow: inset 0 0 0 1rem #5c0b9a;
+    animation-name: pulsIn;
+  }
+  .loader:after {
+    width: calc(100% - 2rem);
+    padding-bottom: calc(100% - 2rem);
+    box-shadow: 0 0 0 0 #fff;
+  }
+
+  @keyframes pulsIn {
+    0% {
+      box-shadow: inset 0 0 0 1rem #fff;
+      opacity: 1;
+    }
+    50%, 100% {
+      box-shadow: inset 0 0 0 0 #fff;
+      opacity: 0;
+    }
+  }
+
+  @keyframes pulsOut {
+    0%, 50% {
+      box-shadow: 0 0 0 0 #fff;
+      opacity: 0;
+    }
+    100% {
+      box-shadow: 0 0 0 1rem #fff;
+      opacity: 1;
+    }
+  }
+
+  /* Animation */
+    .steel-metallic {
+      background: 
+        /* Highlight sweep */
+        linear-gradient(
+          105deg,
+          transparent 40%,
+          rgba(255, 255, 255, 0.3) 47%,
+          rgba(255, 255, 255, 0.9) 50%,
+          rgba(255, 255, 255, 0.3) 53%,
+          transparent 60%
+        ),
+        /* Base metallic gradient */
+        radial-gradient(
+          ellipse at center,
+          #9a9a9a 0%,
+          #7a7a7a 25%,
+          #5a5a5a 50%,
+          #7a7a7a 75%,
+          #9a9a9a 100%
+        );
+      
+      background-size: 250% 100%, 100% 100%;
+      background-position: -150% 0, 0 0;
+      color: transparent;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      
+      animation: steel-shine 3s ease-in-out infinite;
+    }
+
+  @keyframes steel-shine {
+    0% {
+      background-position: -150% 0, 0 0;
+    }
+    50% {
+      background-position: 150% 0, 0 0;
+    }
+    100% {
+      background-position: -150% 0, 0 0;
+    }
+  } 
+
+  .fade-in-left {
+  animation: fadeInLeft 0.6s ease-out forwards;
+  }
+
+  .fade-in-right {
+    animation: fadeInRight 1s ease-out forwards;
+  }
+
+  .fade-in-up {
+    animation: fadeInUp 1s ease-out forwards;
+  }
+  .slide-in-left {
+    animation: slideInLeft 1s ease-out forwards;
+  }
+
+  .slide-in-left-hidden {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+
+  .slide-in-right {
+    animation: slideInRight 0.9s ease-out forwards;
+  }
+
+  .slide-in-right-hidden {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+
+  .slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+
+  .slide-up-hidden {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+
+  /* Keyframes  */
+  @keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slideUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+  }
+
+    /* Left to Right */
+  @keyframes fadeInLeft {
+    0% { opacity: 0; transform: translateX(-20px); }
+    100% { opacity: 1; transform: translateX(0); }
+  }
+
+  /* Right to Left */
+  @keyframes fadeInRight {
+    0% { opacity: 0; transform: translateX(20px); }
+    100% { opacity: 1; transform: translateX(0); }
+  }
+
+  /* Left to Right (more distance) */
+  @keyframes slideInLeft {
+    0% { opacity: 0; transform: translateX(-50px); }
+    100% { opacity: 1; transform: translateX(0); }
+  }
+
+  /* Right to Left (more distance) */
+  @keyframes slideInRight {
+    0% { opacity: 0; transform: translateX(50px); }
+    100% { opacity: 1; transform: translateX(0); }
+  }
+
+  /* Left to Right (full width) */
+  @keyframes slideInFromLeft {
+    0% { opacity: 0; transform: translateX(-100%); }
+    100% { opacity: 1; transform: translateX(0); }
+  }
+
+  /* Right to Left (full width) */
+  @keyframes slideInFromRight {
+    0% { opacity: 0; transform: translateX(100%); }
+    100% { opacity: 1; transform: translateX(0); }
+  }
+
+}
+
+
+/* Custom Quill Editor Styling */
+.custom-quill-editor {
+  font-family: inherit;
+}
+
+.custom-quill-editor .ql-toolbar {
+  border: 1px solid rgb(209 213 219);
+  border-radius: 0.125rem 0.125rem 0 0;
+  background-color: white;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.custom-quill-editor .ql-container {
+  border: 1px solid rgb(209 213 219);
+  border-top: 0;
+  border-radius: 0 0 0.125rem 0.125rem;
+  background-color: white;
+}
+
+.custom-quill-editor .ql-editor {
+  min-height: 350px;
+  font-size: 1rem;
+  line-height: 1.75;
+  padding: 1rem;
+  font-family: inherit;
+}
+
+/* Placeholder styling */
+.custom-quill-editor .ql-editor.ql-blank::before {
+  font-style: italic;
+  color: rgb(156 163 175);
+  left: 1rem;
+}
+
+/* Toolbar button styling */
+.custom-quill-editor .ql-toolbar button {
+  transition: color 200ms;
+}
+
+.custom-quill-editor .ql-toolbar button:hover,
+.custom-quill-editor .ql-toolbar button:focus {
+  color: rgb(147 51 234);
+}
+
+.custom-quill-editor .ql-toolbar button.ql-active {
+  color: rgb(147 51 234);
+}
+
+.custom-quill-editor .ql-toolbar .ql-stroke {
+  stroke: currentColor;
+}
+
+.custom-quill-editor .ql-toolbar .ql-fill {
+  fill: currentColor;
+}
+
+/* Dropdown styling */
+.custom-quill-editor .ql-toolbar .ql-picker-label:hover,
+.custom-quill-editor .ql-toolbar .ql-picker-label.ql-active {
+  color: rgb(147 51 234);
+}
+
+.custom-quill-editor .ql-toolbar .ql-picker-options {
+  background-color: white;
+  border: 1px solid rgb(209 213 219);
+  border-radius: 0.25rem;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+}
+
+/* Content styling for display mode (prose) */
+.prose {
+  color: rgb(31 41 55);
+  max-width: none;
+}
+
+.prose h1 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.prose h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.prose p {
+  margin-bottom: 1rem;
+}
+
+.prose ul {
+  list-style-type: disc;
+  list-style-position: inside;
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+}
+
+.prose ol {
+  list-style-type: decimal;
+  list-style-position: inside;
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+}
+
+.prose li {
+  margin-bottom: 0.5rem;
+}
+
+.prose blockquote {
+  border-left: 4px solid rgb(209 213 219);
+  padding-left: 1rem;
+  font-style: italic;
+  margin: 1rem 0;
+  color: rgb(75 85 99);
+}
+
+.prose pre {
+  background-color: rgb(243 244 246);
+  padding: 1rem;
+  border-radius: 0.25rem;
+  overflow-x: auto;
+  margin-bottom: 1rem;
+  font-family: ui-monospace, monospace;
+}
+
+.prose code {
+  background-color: rgb(243 244 246);
+  padding: 0.125rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  font-family: ui-monospace, monospace;
+}
+
+.prose pre code {
+  background-color: transparent;
+  padding: 0;
+}
+
+.prose a {
+  color: rgb(147 51 234);
+  text-decoration: underline;
+  transition: color 200ms;
+}
+
+.prose a:hover {
+  color: rgb(126 34 206);
+}
+
+.prose img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.25rem;
+  margin: 1rem 0;
+}
+
+.prose strong {
+  font-weight: 700;
+}
+
+.prose em {
+  font-style: italic;
+}
+
+/* Focus states */
+.custom-quill-editor .ql-editor:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgb(216 180 254);
+}
+
+/* Snow theme color picker */
+.ql-snow .ql-picker.ql-expanded .ql-picker-options {
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+}
+
+/* Tooltip styling */
+.ql-snow .ql-tooltip {
+  background-color: rgb(31 41 55);
+  color: white;
+  border-radius: 0.25rem;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  border: none;
+}
+
+.ql-snow .ql-tooltip input[type=text] {
+  background-color: white;
+  color: rgb(31 41 55);
+  border: 1px solid rgb(209 213 219);
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.ql-snow .ql-tooltip a.ql-action::after {
+  border-right: 1px solid rgb(75 85 99);
+}
+
+.ql-snow .ql-tooltip a.ql-remove::before {
+  color: rgb(248 113 113);
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .custom-quill-editor .ql-toolbar {
+    position: relative;
+  }
+  
+  .custom-quill-editor .ql-editor {
+    min-height: 250px;
+  }
+}
+

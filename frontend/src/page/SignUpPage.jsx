@@ -155,7 +155,7 @@ const SignUpPage = () => {
 
 
           <div className=' w-full max-w-[60%] mt-12 flex flex-col gap-6 z-50'>
-            <form action="w-full">
+            <form className='w-full' onSubmit={handleSubmit} >
               <div className=''>
                 <label htmlFor="username" className='font-medium mb-2'>
                   Username

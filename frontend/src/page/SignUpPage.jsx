@@ -117,9 +117,9 @@ const SignUpPage = () => {
       );
 
       if (success) {
-        navigate('/login', { 
+        navigate('/auth/login', { 
           state: { message: 'Account created successfully! Please log in.' }
-        });
+        }); 
       } else {
         setErrors({ 
           general: 'Sign up failed. Username or email may already exist.' 

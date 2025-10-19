@@ -180,9 +180,9 @@ REST_FRAMEWORK = {
     ]
 }
 
-if DEBUG:
-    INSTALLED_APPS += ['silk']
-    MIDDLEWARE += ['silk.middleware.SilkyMiddleware']
+# if DEBUG:
+#     INSTALLED_APPS += ['silk']
+#     MIDDLEWARE += ['silk.middleware.SilkyMiddleware']
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 

@@ -221,7 +221,7 @@ const NoteDetailViewandEdit = () => {
 
 
   return (
-    <div className='pt-4 pl-8'>
+    <div className='pt-4 pl-8 w-full'>
 
       <div className='flex flex-row justify-between '>
         <div 

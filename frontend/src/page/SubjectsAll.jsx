@@ -98,7 +98,7 @@ const SubjectsAll = () => {
           
 
           {/* Subject Cards  */}
-          <div className='min-h-[600px] bg-white-3 mt-4 rounded-sm p-4 flex gap-4 flex-wrap'>
+          <div className='min-h-[600px] bg-white-3 mt-4 mr-4 rounded-sm p-4 flex gap-4 flex-wrap'>
             {subjects?.map((subject, i) => {
               return (
                 <div 

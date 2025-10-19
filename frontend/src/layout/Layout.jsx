@@ -15,9 +15,13 @@ const Layout = () => {
       <div className="main-content w-full flex overflow-hidden h-full">
        {/* <Sidebar></Sidebar> */}
        <SideBar1></SideBar1>
-       <div className="page-content w-full overflow-y-scroll">
+       
+       <div className="page-content w-full overflow-y-scroll flex relative pr-[300px]">
         <Outlet></Outlet>
-        
+
+        <div className='w-[300px] fixed right-6 top-24 bg-white h-[80vh]'>
+          AI Helper
+        </div>
         </div> 
       </div>
     </div>

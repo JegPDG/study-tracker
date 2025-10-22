@@ -1,12 +1,15 @@
-import { ArrowLeftCircleIcon, ArrowRightCircleIcon, PaperAirplaneIcon } from '@heroicons/react/24/solid'
+import { ArrowLeftCircleIcon, ArrowRightCircleIcon, PaperAirplaneIcon, XCircleIcon } from '@heroicons/react/24/solid'
 import React, { useEffect, useState } from 'react'
 import { logo } from '../../assets/assets'
 import { aiCall } from '../../services/api'
 import { data } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import { use } from 'react'
+import ReactMarkdown from "react-markdown";
 
-const AIHelper = () => {
+const AIHelper = (props) => {
+  const { setOpenAIhelp } = props
+
   const [message, setMessage] = useState('')
   const [conversation, setConversation] = useState(null);
   const [replyLoading, setReplyLoading] = useState(false)
@@ -85,19 +88,40 @@ const AIHelper = () => {
   useEffect(() => {
     console.log(conversationThread)
   }, [conversationThread])
+
+
   return (
     <div className='w-full h-full bg-white py-2 px-4 rounded-lg shadow-2 flex flex-col'>
 
-      <div className='flex items-center gap-2 w-full justify-center'>
-        <img className='size-8' src={logo.logo_1} alt="" />
-        StudBud AI Helper
+      <div className='flex items-center gap-2 w-full justify-between'>
+        <div className='flex items-center space-x-2 '>
+          <img className='size-8' src={logo.logo_1} alt="" />
+           <p>StudBud AI Helper</p>
+        </div>
+
+        <div className=''>
+          <div className='flex'>
+            <button
+              onClick={() => setOpenAIhelp(false)}
+              >
+              <XCircleIcon className='size-6' fill='red'></XCircleIcon>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div className='mt-2 flex flex-row-reverse'>
+        <button 
+          onClick={() => setConversationThread([])}
+          className='bg-red-200 px-2 rounded-2xl border border-black/10 text-sm'>
+          New conversation?
+        </button>
       </div>
 
       <div className='w-full bg-white-3 mt-4 p-2 flex-1 overflow-auto scrollbar-thin rounded-md relative'>
 
-
         {conversationThread.length < 1 && 
-          <div className='flex flex-col items-center justify-center h-full'>
+          <div className='flex flex-col items-center justify-center h-full slide-up'>
             {/* Conversations List  */}
             <div className='bg-white-1 p-6 w-full max-w-[80%] mx-auto rounded-2xl '>
               <p className='gradient-purple-font'>Your Conversations</p>
@@ -113,11 +137,10 @@ const AIHelper = () => {
                 })}
 
               </div>
-
-              <div className='flex w-full justify-between mt-2'>
+              {/* <div className='flex w-full justify-between mt-2'>
                 <button><ArrowLeftCircleIcon className='size-8' fill='#86728B'></ArrowLeftCircleIcon></button>
                 <button><ArrowRightCircleIcon className='size-8' fill='#86728B'></ArrowRightCircleIcon></button>
-              </div>
+              </div> */}
             </div>
             <p className='text-2xl text-center gradient-purple-font font-medium mt-8'>Start a Conversation Now</p>
           </div>
@@ -150,10 +173,10 @@ const AIHelper = () => {
                   key={i}
                   className='w-full'>
                   <div className='flex w-full'>
-                    <div className='bg-white-2 p-2 rounded-md max-w-[80%]'>
-                        <p className='text-sm'>
+                    <div className='bg-white-2 p-2 rounded-md max-w-[80%] text-sm'>
+                        <ReactMarkdown  >
                           {text.content}
-                        </p>
+                        </ReactMarkdown>
                     </div>
                   </div>
                 </div>
@@ -172,7 +195,7 @@ const AIHelper = () => {
               value={message}
               type="text"
               placeholder='Ask Studbud AI Helper...'
-              className='w-full resize-none focus:outline-none focus:ring-1 focus:ring-dark-purple-text/20 px-2'
+              className='w-full resize-none focus:outline-none focus:ring-1 text-sm focus:ring-dark-purple-text/20 px-2'
               />
               <div className='flex flex-row-reverse justify-between'>
 

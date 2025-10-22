@@ -43,7 +43,7 @@ const Overview = () => {
         <div className="px-12 w-full shrink-0">
           <p className="text-4xl font-medium opacity-70">Welcome, <span className='font-bold text-purple-2'>{user?.username}</span>!</p>
           
-          {/* Quick Search  */}
+          {/* Quick Search 
           <div className='mt-4'>
             <p className='text-xl font-medium'>Quick Search</p>
             <div className='relative w-[70%] bg-purple-2/20 rounded-md mt-2 shadow-2'>
@@ -57,7 +57,7 @@ const Overview = () => {
                 placeholder='Search note...' 
                 className='w-full pt-2 pb-2  block pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent' />
             </div>
-          </div>
+          </div> */}
 
 
 

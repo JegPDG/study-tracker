@@ -49,16 +49,16 @@ const SubjectsAll = () => {
   }
 
   return (
-    <div className='relative'>
+    <div className='relative w-full'>
       
       {/* New Subject modal  */}
       {newsubject && (
-        <AddNewSubject 
+        <AddNewSubject
           handleAddNewSub={handleAddNewSub}
         ></AddNewSubject>
       )}
 
-      <div className='pt-4 pl-8'>
+      <div className='pt-4 pl-8 w-full'>
         <div className=''>
           {/* Note title  */}
           <p className='text-4xl font-bold opacity-40'>SUBJECTS</p>

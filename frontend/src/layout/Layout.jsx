@@ -22,13 +22,13 @@ const Layout = () => {
       <NavigationBar></NavigationBar>
       <div className="main-content w-full flex overflow-hidden h-full">
        {/* <Sidebar></Sidebar> */}
-       <SideBar1></SideBar1>
+       <SideBar1 setOpenAIhelp={setOpenAIhelp}></SideBar1>
        
-       <div className="page-content w-full overflow-y-scroll flex relative pr-[400px]">
+       <div className={`page-content w-full overflow-y-scroll flex relative  ${openAIhelp ? 'pr-[400px]' : ''} `}>
         <Outlet></Outlet>
 
-        <div className='w-[400px] fixed right-6 top-24  h-[80vh]'>
-          <AIHelper></AIHelper>
+        <div className={`w-[400px] fixed right-6 top-24 slide-in-right  h-[80vh] ${openAIhelp ? 'block' : 'hidden'}`}>
+          <AIHelper setOpenAIhelp={setOpenAIhelp}></AIHelper>
         </div>
         </div> 
       </div>

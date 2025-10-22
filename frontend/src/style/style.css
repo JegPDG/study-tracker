@@ -17,6 +17,8 @@
   --color-white-3: #ECECEC;
   --color-dark-purple-text: #2C1F2C;
 
+  --color-gradient-purple: radial-gradient(circle,rgba(215, 166, 224, 1) 0%, rgba(110, 44, 145, 1) 98%);
+
   --color-white-grey: #EFEFEF;
 
 }
@@ -75,13 +77,13 @@
     scrollbar-width: none; /* Firefox */
   }
 
-  .scrollbar-style::-webkit-scrollbar{
+  .scrollbar-thin::-webkit-scrollbar{
     scrollbar-color: rgb(60, 59, 59) rgb(25, 25, 24);
     scrollbar-width: thin;
   }
 
-  .scrollbar-style {
-    scrollbar-color: rgb(60, 59, 59) rgb(25, 25, 24);
+  .scrollbar-thin {
+    scrollbar-color: rgb(147, 147, 147) rgb(246, 246, 246);
     scrollbar-width: thin;
   }
 
@@ -291,6 +293,61 @@
 
 }
 
+@layer components{
+  .gradient-purple-font{
+    background: radial-gradient(circle, rgba(215, 166, 224, 1) 0%, rgba(110, 44, 145, 1) 98%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
+
+    /* Animation */
+    .steel-metallic {
+      background: 
+        /* Highlight sweep */
+        linear-gradient(
+          105deg,
+          transparent 40%,
+          rgba(255, 255, 255, 0.3) 47%,
+          rgba(255, 255, 255, 0.9) 50%,
+          rgba(255, 255, 255, 0.3) 53%,
+          transparent 60%
+        ),
+        /* Base metallic gradient */
+        radial-gradient(
+          ellipse at center,
+          #9a9a9a 0%,
+          #7a7a7a 25%,
+          #5a5a5a 50%,
+          #7a7a7a 75%,
+          #9a9a9a 100%
+        );
+      
+      background-size: 250% 100%, 100% 100%;
+      background-position: -150% 0, 0 0;
+      color: transparent;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      
+      animation: steel-shine 3s ease-in-out infinite;
+    }
+
+  @keyframes steel-shine {
+    0% {
+      background-position: -150% 0, 0 0;
+    }
+    50% {
+      background-position: 150% 0, 0 0;
+    }
+    100% {
+      background-position: -150% 0, 0 0;
+    }
+  } 
+
+
+}
 
 /* Custom Quill Editor Styling */
 .custom-quill-editor {

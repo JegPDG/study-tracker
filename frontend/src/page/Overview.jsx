@@ -108,7 +108,7 @@ const Overview = () => {
           {/* Recently Opened Notes Original*/}
           <div className="mt-6">
             <p className="text-xl font-medium">Recent Notes</p>
-            <div className="w-full overflow-x-scroll mt-4">
+            <div className="w-full overflow-x-scroll scrollbar-thin mt-4">
               <div className="flex flex-nowrap space-x-4 p-2">
                 {note.notes?.map((note, i) => (
                   <NoteCard
@@ -128,7 +128,7 @@ const Overview = () => {
           {/* Recently Opened Subjects */}
           <div className="mt-6">
             <p className="text-xl font-medium">Recent Subjects</p>
-            <div className="w-full overflow-x-scroll mt-4">
+            <div className="w-full overflow-x-scroll scrollbar-thin mt-4">
               <div className="flex flex-nowrap space-x-4 p-2">
                 {subject.subjects?.map((subject, i) => (
                   <SubjectCard

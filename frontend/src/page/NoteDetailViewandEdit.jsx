@@ -88,7 +88,7 @@ const NoteDetailViewandEdit = () => {
     staleTime: 1000 * 60 * 5, // Optional: cache for 5 minutes
   });
 
-  console.log(noteDetailView)
+  // console.log(noteDetailView)
 
 
   // Delete
@@ -147,7 +147,7 @@ const NoteDetailViewandEdit = () => {
     }));
   };
 
-  console.log(error)
+  // console.log(error)
 
 
 
@@ -195,7 +195,7 @@ const NoteDetailViewandEdit = () => {
 
 
   // Logs -------------------------------------------------------------------------
-  console.log("Note detail View", noteDetailView)
+  // console.log("Note detail View", noteDetailView)
   // console.log("Note Detail Error GET:", error)
 
 

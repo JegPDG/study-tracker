@@ -178,7 +178,7 @@ REST_FRAMEWORK = {
     ),
      'DEFAULT_FILTER_BACKENDS': [
         'rest_framework.filters.SearchFilter',
-    ]
+    ],
 }
 
 # if DEBUG:

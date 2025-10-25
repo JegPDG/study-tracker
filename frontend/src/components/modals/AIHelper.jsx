@@ -112,7 +112,10 @@ const AIHelper = (props) => {
 
       <div className='mt-2 flex flex-row-reverse'>
         <button 
-          onClick={() => setConversationThread([])}
+          onClick={() => {
+            setConversationThread([])
+            setConversation(null)
+          }}
           className='bg-red-200 px-2 rounded-2xl border border-black/10 text-sm'>
           New conversation?
         </button>
@@ -142,7 +145,7 @@ const AIHelper = (props) => {
                 <button><ArrowRightCircleIcon className='size-8' fill='#86728B'></ArrowRightCircleIcon></button>
               </div> */}
             </div>
-            <p className='text-2xl text-center gradient-purple-font font-medium mt-8'>Start a Conversation Now</p>
+            {/* <p className='text-2xl text-center gradient-purple-font font-medium mt-8'>Start a Conversation Now</p> */}
           </div>
         }
 

@@ -53,6 +53,15 @@
   }
 
   /* index.css or globals.css */
+    .gradient-1 {
+    background: linear-gradient(
+      90deg,
+      rgb(137, 72, 153) 0%,
+      rgba(133, 35, 153, 1) 45%,
+      rgba(190, 69, 214, 1) 100%
+    );
+  }
+
   .text-gradient-1 {
     background: linear-gradient(
       90deg,

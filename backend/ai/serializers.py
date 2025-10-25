@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import ChatMessage, Conversation
+from .models import ChatMessage, Conversation, SummarizedNote
 
 class ChatMessageSerializer(serializers.ModelSerializer):
   class Meta:
@@ -19,3 +19,7 @@ class ConversationListSerializer(serializers.ModelSerializer):
     model = Conversation
     fields = ['id', 'title', 'created_at']
 
+class SummarizedNoteSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = SummarizedNote
+    fields = ['id', 'note', 'summary_content', 'generated_at', 'model_used']

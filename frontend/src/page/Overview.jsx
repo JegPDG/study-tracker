@@ -40,7 +40,7 @@ const Overview = () => {
       {/* Left & Right Section */}
       <div className="flex w-full max-w-full">
         {/* Left Side */}
-        <div className="px-12 w-full shrink-0">
+        <div className="pl-12 p-6 w-full shrink-0">
           <p className="text-4xl font-medium opacity-70">Welcome, <span className='font-bold text-purple-2'>{user?.username}</span>!</p>
           
           {/* Quick Search 

@@ -4,6 +4,9 @@ from rest_framework import viewsets, permissions, filters
 from .models import Conversation, ChatMessage
 from .serializers import ConversationSerializer, ChatMessageSerializer, ConversationListSerializer
 from rest_framework.pagination import PageNumberPagination
+from google import genai
+
+client = genai.Client()
 
 # Create your views here.
 class ConversationView(ListAPIView):
@@ -45,4 +48,6 @@ class ChatMessageVIew(ListAPIView):
   def get_queryset(self):
     user = self.request.user
     return ChatMessage.objects.filter(user=user)
+
+# Summarizer View 
 

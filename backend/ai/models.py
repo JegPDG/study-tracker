@@ -1,6 +1,7 @@
 from django.db import models
 import uuid
 from users.models import User
+from tracker.models import Notes
 
 # Create your models here.
 class Conversation(models.Model):
@@ -23,4 +24,15 @@ class ChatMessage(models.Model):
   class Meta:
     ordering = ('created_at',)
 
-    
+class SummarizedNote(models.Model):
+  id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+  note = models.OneToOneField(Notes, on_delete=models.CASCADE, related_name='summary')
+  summary_content = models.TextField()
+  generated_at = models.DateTimeField(auto_now_add=True)
+  model_used = models.CharField(max_length=100, default="gemini-2.5-flash")
+
+  def __str__(self):
+    return f'Summary of {self.note.title}'
+  
+  class Meta:
+    verbose_name_plural = 'Note Summaries'

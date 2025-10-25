@@ -43,3 +43,22 @@ Content-Type: application/json
   "subject_id": [2],
   "user": 1
 }
+
+###
+POST http://127.0.0.1:8000/api/ai/generate HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYxMTQ5NjI2LCJpYXQiOjE3NjExNDYwMjYsImp0aSI6IjYxNWRlNDE0ZDFhYTQ1MGU4OWNmOTNjNDM2MjlkZmUyIiwidXNlcl9pZCI6MX0.dmLbZHljrtbntQBDHtLGFjvNLh7EoaX5yZK4AILV-e4
+Content-Type: application/json
+
+{
+  "message" : "What is a sheep in few words"
+}
+
+###
+GET http://127.0.0.1:8000/api/ai/conversations HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYxMTI0MDk1LCJpYXQiOjE3NjExMjA0OTUsImp0aSI6ImRhYWVlOWFkOTM5NjRlNGM4NGI0NWZmYzJlYjNlYWM1IiwidXNlcl9pZCI6MX0.lNYLZOJcwPwt4wD8gLCpoighfz4DnGcCMa_D2GGqMrA
+
+
+
+###
+GET http://127.0.0.1:8000/api/ai/chat-message HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYxMTI0MDk1LCJpYXQiOjE3NjExMjA0OTUsImp0aSI6ImRhYWVlOWFkOTM5NjRlNGM4NGI0NWZmYzJlYjNlYWM1IiwidXNlcl9pZCI6MX0.lNYLZOJcwPwt4wD8gLCpoighfz4DnGcCMa_D2GGqMrA

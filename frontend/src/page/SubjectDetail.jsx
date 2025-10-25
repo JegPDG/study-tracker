@@ -70,7 +70,7 @@ const SubjectDetail = () => {
   
 
   return (
-      <div className='pt-4 pl-8'>
+      <div className='pt-4 pl-8 w-full'>
 
         {/* Delete and Back buttons  */}
         <div className='flex flex-row justify-between '>

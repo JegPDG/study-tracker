@@ -58,4 +58,22 @@ api.interceptors.response.use(
   }
 );
 
+export const aiCall = {
+  aiGenerate: async ({message, conversation}) => {
+   return await api.post('ai/generate', { message, conversation })
+  },
+
+  aiConversation: async (conversation) => {
+    return await api.get(`ai/conversation/${conversation}/messages`)
+  },
+  aiGetConvoList: async() => {
+    const res = await api.get('ai/conversation/list')
+    return res.data
+  }
+}
+
+
+
+
+
 export default api;

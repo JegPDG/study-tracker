@@ -71,6 +71,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt.token_blacklist',
     'users',
     'silk',
+    'ai',
 ]
 
 MIDDLEWARE = [
@@ -177,12 +178,12 @@ REST_FRAMEWORK = {
     ),
      'DEFAULT_FILTER_BACKENDS': [
         'rest_framework.filters.SearchFilter',
-    ]
+    ],
 }
 
-if DEBUG:
-    INSTALLED_APPS += ['silk']
-    MIDDLEWARE += ['silk.middleware.SilkyMiddleware']
+# if DEBUG:
+#     INSTALLED_APPS += ['silk']
+#     MIDDLEWARE += ['silk.middleware.SilkyMiddleware']
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 

@@ -1,4 +1,4 @@
-import { ArrowLeftIcon } from '@heroicons/react/24/solid'
+import { ArrowLeftIcon, SparklesIcon } from '@heroicons/react/24/solid'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import React, { useEffect, useMemo, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
@@ -88,7 +88,7 @@ const NoteDetailViewandEdit = () => {
     staleTime: 1000 * 60 * 5, // Optional: cache for 5 minutes
   });
 
-  console.log(noteDetailView)
+  // console.log(noteDetailView)
 
 
   // Delete
@@ -147,7 +147,7 @@ const NoteDetailViewandEdit = () => {
     }));
   };
 
-  console.log(error)
+  // console.log(error)
 
 
 
@@ -195,7 +195,7 @@ const NoteDetailViewandEdit = () => {
 
 
   // Logs -------------------------------------------------------------------------
-  console.log("Note detail View", noteDetailView)
+  // console.log("Note detail View", noteDetailView)
   // console.log("Note Detail Error GET:", error)
 
 
@@ -221,7 +221,7 @@ const NoteDetailViewandEdit = () => {
 
 
   return (
-    <div className='pt-4 pl-8'>
+    <div className='pt-4 pl-8 w-full'>
 
       <div className='flex flex-row justify-between '>
         <div 
@@ -268,11 +268,22 @@ const NoteDetailViewandEdit = () => {
               : isEditMode ? 'Save' : 'Create'}
           </button>
         ) : (
-          <button
-            onClick={() => setEditForm(true)}
-            className='bg-purple-1 pt-2 pb-2 pr-4 pl-4 text-white-1 rounded-sm cursor-pointer hover:bg-purple-1/80'>
-            Edit
-          </button>
+          <div className='space-x-2 flex flex-row'>
+            <button
+              onClick={() => setEditForm(true)}
+              className='bg-purple-1 pt-2 pb-2 pr-4 pl-4 text-white-1 rounded-sm cursor-pointer hover:bg-purple-1/80'>
+              Edit
+            </button>
+
+            <button
+              
+              className='gradient-1 space-x-2 pt-2 pb-2 pr-4 pl-4 text-white-1 rounded-sm cursor-pointer hover:bg-purple-1/80 flex'>
+                <SparklesIcon className='size-6' fill='white'></SparklesIcon>
+                AI Summarize
+            </button>
+
+          </div>
+          
         )}
 
         {isEditMode && (

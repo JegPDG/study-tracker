@@ -1,4 +1,4 @@
-import { BookOpenIcon, CreditCardIcon, PencilSquareIcon } from '@heroicons/react/24/solid'
+import { BookOpenIcon, CreditCardIcon, MagnifyingGlassIcon, PencilSquareIcon } from '@heroicons/react/24/solid'
 import { useQuery } from '@tanstack/react-query'
 import React, { useContext } from 'react'
 import api from '../services/api'
@@ -36,16 +36,33 @@ const Overview = () => {
   const {totale_notes} = note
 
   return (
-    <div className="pt-4 overflow-x-hidden pb-4">
+    <div className="pt-4 w-full pb-4">
       {/* Left & Right Section */}
       <div className="flex w-full max-w-full">
-        
         {/* Left Side */}
-        <div className="flex-1 px-12 overflow-hidden">
+        <div className="pl-12 p-6 w-full shrink-0">
           <p className="text-4xl font-medium opacity-70">Welcome, <span className='font-bold text-purple-2'>{user?.username}</span>!</p>
+          
+          {/* Quick Search 
+          <div className='mt-4'>
+            <p className='text-xl font-medium'>Quick Search</p>
+            <div className='relative w-[70%] bg-purple-2/20 rounded-md mt-2 shadow-2'>
+              <div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>
+                <MagnifyingGlassIcon className='size-6'></MagnifyingGlassIcon>
+              </div>
+              <input 
+                // value={search}
+                // onChange={(e) => setSearch(e.target.value)}
+                type="text" 
+                placeholder='Search note...' 
+                className='w-full pt-2 pb-2  block pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent' />
+            </div>
+          </div> */}
+
+
 
           {/* Overview */}
-          <div className="mt-8">
+          <div className="mt-4">
             <p className="text-xl font-medium">Overview</p>
             <div className="grid grid-cols-3 gap-4 mt-2">
               {[
@@ -69,9 +86,29 @@ const Overview = () => {
           </div>
 
           {/* Recently Opened Notes */}
+          {/* <div className="mt-6">
+            <p className="text-xl font-medium">Recent Notes</p>
+            <div className="">
+              <div className="grid grid-cols-2">
+                {note.notes?.map((note, i) => (
+                  <NoteCard
+                    key={i}
+                    noteID={note.id}
+                    updated_at={note.updated_at}
+                    title={note.title}
+                    content={note.content}
+                    subject={note.subject?.name}
+                  />
+                ))}
+              </div>
+            </div>
+            
+          </div> */}
+
+          {/* Recently Opened Notes Original*/}
           <div className="mt-6">
             <p className="text-xl font-medium">Recent Notes</p>
-            <div className="w-full overflow-x-scroll mt-4">
+            <div className="w-full overflow-x-scroll scrollbar-thin mt-4">
               <div className="flex flex-nowrap space-x-4 p-2">
                 {note.notes?.map((note, i) => (
                   <NoteCard
@@ -84,14 +121,14 @@ const Overview = () => {
                   />
                 ))}
               </div>
-              
             </div>
+
           </div>
 
           {/* Recently Opened Subjects */}
           <div className="mt-6">
             <p className="text-xl font-medium">Recent Subjects</p>
-            <div className="w-full overflow-x-scroll mt-4">
+            <div className="w-full overflow-x-scroll scrollbar-thin mt-4">
               <div className="flex flex-nowrap space-x-4 p-2">
                 {subject.subjects?.map((subject, i) => (
                   <SubjectCard
@@ -108,7 +145,7 @@ const Overview = () => {
         </div>
 
         {/* Right Side */}
-        <div className="w-[200px] shrink-0 hidden">
+        <div className="w-full shrink-0 hidden">
           Right side component
         </div>
       </div>

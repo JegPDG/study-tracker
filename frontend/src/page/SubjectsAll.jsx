@@ -40,25 +40,17 @@ const SubjectsAll = () => {
 
   // console.log("All Subjects data:", subjects)
 
-  if(isLoading) {
-    return(
-      <div className='loading'>
-        <span className='loader'></span>
-      </div>
-    )
-  }
-
   return (
-    <div className='relative'>
+    <div className='relative w-full'>
       
       {/* New Subject modal  */}
       {newsubject && (
-        <AddNewSubject 
+        <AddNewSubject
           handleAddNewSub={handleAddNewSub}
         ></AddNewSubject>
       )}
 
-      <div className='pt-4 pl-8'>
+      <div className='pt-4 pl-8 w-full'>
         <div className=''>
           {/* Note title  */}
           <p className='text-4xl font-bold opacity-40'>SUBJECTS</p>
@@ -98,7 +90,8 @@ const SubjectsAll = () => {
           
 
           {/* Subject Cards  */}
-          <div className='min-h-[600px] bg-white-3 mt-4 rounded-sm p-4 flex gap-4 flex-wrap'>
+          <div className='min-h-[600px] bg-white-3 mt-4 mr-4 rounded-sm p-4 flex gap-4 flex-wrap'>
+          
             {subjects?.map((subject, i) => {
               return (
                 <div 

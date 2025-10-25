@@ -25,7 +25,7 @@ const NotesAll = () => {
   console.log("Notes All data:", notes)
 
   return (
-    <div className='pt-4 pl-8'>
+    <div className='pt-4 pl-8 w-full'>
       <div className=''>
         {/* Note title  */}
         <p className='text-4xl font-bold opacity-40'>NOTES</p>
@@ -60,7 +60,7 @@ const NotesAll = () => {
           </div>
         </div>
         
-        <div className='min-h-[600px] bg-white-3 mt-4 rounded-sm p-4 flex gap-4 flex-wrap'>
+        <div className='min-h-[600px] bg-white-3 mt-4 mr-4 rounded-sm p-4 w-full flex gap-4 flex-wrap'>
           {notes?.map((note, i) => {
             return (
               <div 

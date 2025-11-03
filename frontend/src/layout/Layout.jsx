@@ -28,7 +28,7 @@ const Layout = () => {
         <Outlet></Outlet>
 
         <div className={`w-[400px] fixed right-6 top-24 slide-in-right  h-[80vh] ${openAIhelp ? 'block' : 'hidden'}`}>
-          <AIHelper setOpenAIhelp={setOpenAIhelp}></AIHelper>
+          <AIHelper setOpenAIhelp={setOpenAIhelp} openAIhelp={openAIhelp}></AIHelper>
         </div>
         </div> 
       </div>

@@ -38,20 +38,9 @@ function App() {
           <Route path='/auth/login' element={<LoginPage/>} />
           <Route path='/auth/sign-up' element={<SignUpPage/>} />
 
-
-          {/* <Route path='/' element={<Login />} /> */}
-          {/* <Route path='/login' element={<Login />} />
-          <Route path='/signup' element={<SignUp />} /> */}
-          {/* <Route path='/auth' element={<AuthLayoutNew />} /> */}
-
-
-
           {/* Main Layout */}
           <Route element={<Layout />}>
-            {/* Dashboard */}
-            {/* <Route path='/dashboard' element={<DashLayout />} /> */}
             <Route path='/overview' element={<Overview />} />
-
 
             {/* Subjects */}
             <Route path='/subjects' element={<SubjectsAll />} />

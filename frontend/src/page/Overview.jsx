@@ -1,6 +1,6 @@
 import { BookOpenIcon, CreditCardIcon, MagnifyingGlassIcon, PencilSquareIcon } from '@heroicons/react/24/solid'
 import { useQuery } from '@tanstack/react-query'
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import api from '../services/api'
 import SubjectCard from '../components/SubjectCard'
 import NoteCard from '../components/NoteCard'
@@ -9,6 +9,7 @@ import { AuthContext } from '../context/AuthContext'
 const Overview = () => {
 
   const { user } = useContext(AuthContext)
+  const [emptyNotes, setEmptyNotes] = useState(false)
 
   const {data: subject = [], isLoading : subLoad, error : suberror} = useQuery({
     queryKey: ['subjects-overview'],
@@ -28,9 +29,11 @@ const Overview = () => {
     keepPreviousData: true
   })
 
+  
   console.log("overview subject",subject)
   console.log("overview note", note)
   console.log("User", user)
+
 
   const {total_subjects} = subject
   const {totale_notes} = note
@@ -77,7 +80,7 @@ const Overview = () => {
                       <p className="font-medium">{item.label}</p>
                     </div>
                     <p>
-                      <span className="text-4xl">{item.count}</span>
+                      <span className="text-4xl opacity-60">{item.count ? item.count : 'Empty'}</span>
                     </p>
                   </div>
                 </div>
@@ -85,41 +88,35 @@ const Overview = () => {
             </div>
           </div>
 
-          {/* Recently Opened Notes */}
-          {/* <div className="mt-6">
-            <p className="text-xl font-medium">Recent Notes</p>
-            <div className="">
-              <div className="grid grid-cols-2">
-                {note.notes?.map((note, i) => (
-                  <NoteCard
-                    key={i}
-                    noteID={note.id}
-                    updated_at={note.updated_at}
-                    title={note.title}
-                    content={note.content}
-                    subject={note.subject?.name}
-                  />
-                ))}
-              </div>
-            </div>
-            
-          </div> */}
-
           {/* Recently Opened Notes Original*/}
           <div className="mt-6">
             <p className="text-xl font-medium">Recent Notes</p>
             <div className="w-full overflow-x-scroll scrollbar-thin mt-4">
               <div className="flex flex-nowrap space-x-4 p-2">
-                {note.notes?.map((note, i) => (
-                  <NoteCard
-                    key={i}
-                    noteID={note.id}
-                    updated_at={note.updated_at}
-                    title={note.title}
-                    content={note.content}
-                    subject={note.subject?.name}
-                  />
-                ))}
+                {note.length  ? 
+                  (
+                    <div className='border-4 border-dashed border-black/15 size-60 p-4 shadow-1 overflow-hidden transition-transform duration-300  shrink-0'>
+                        <div className='w-full h-full flex items-center justify-between'>
+                          <p className='gradient-purple-font w-full font-bold text-center text-2xl'>No notes</p>
+                        </div>
+                    </div>
+                  )
+                :
+                  (
+                    <>
+                      {note.notes?.map((note, i) => (
+                        <NoteCard
+                          key={i}
+                          noteID={note.id}
+                          updated_at={note.updated_at}
+                          title={note.title}
+                          content={note.content}
+                          subject={note.subject?.name}
+                        />
+                        ))}
+                    </>
+                  )
+                }
               </div>
             </div>
 
@@ -130,15 +127,29 @@ const Overview = () => {
             <p className="text-xl font-medium">Recent Subjects</p>
             <div className="w-full overflow-x-scroll scrollbar-thin mt-4">
               <div className="flex flex-nowrap space-x-4 p-2">
-                {subject.subjects?.map((subject, i) => (
-                  <SubjectCard
-                    key={i}
-                    subID={subject.id}
-                    name={subject.name}
-                    description={subject.description}
-                    notes={subject.notes}
-                  />
-                ))}
+                {subject.length < 0 ? 
+                (
+                  <div className='border-4 border-dashed border-black/15 h-[300px] w-[250px] box-border p-4 overflow-hidden rounded-sm transition-transform duration-300 shrink-0 shadow-2'>
+                    <div className='w-full h-full flex items-center justify-between'>
+                      <p className='gradient-purple-font w-full font-bold text-center text-2xl'>No Subjects</p>
+                    </div>
+                  </div>
+                )
+              :
+                (
+                  <>
+                    {subject.subjects?.map((subject, i) => (
+                      <SubjectCard
+                        key={i}
+                        subID={subject.id}
+                        name={subject.name}
+                        description={subject.description}
+                        notes={subject.notes}
+                      />
+                    ))}
+                  </>
+                )
+              }
               </div>
             </div>
           </div>

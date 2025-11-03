@@ -4,7 +4,7 @@ import { illustrations } from '../assets/assets';
 import { BookOpenIcon, ChartBarIcon, CreditCardIcon, PencilSquareIcon, SparklesIcon } from '@heroicons/react/24/solid';
 
 const SideBar1 = (props) => {
-  const { setOpenAIhelp } = props
+  const { setOpenAIhelp, openAIhelp } = props
 
   const navigate = useNavigate();
   const [activeFeature, setActiveFeature] = useState(null); 
@@ -14,7 +14,13 @@ const SideBar1 = (props) => {
       {text: 'Subjects', icon: BookOpenIcon,goto: () => {navigate('/subjects')},},
       {text: 'Notes', icon: PencilSquareIcon, goto: () => {navigate('/notes')},},
       {text: 'Flashcards', icon: CreditCardIcon},
-      {text: 'AI Helper', icon: SparklesIcon, goto: () => {setOpenAIhelp(true)}},
+      {text: 'AI Helper', icon: SparklesIcon, goto: () => {
+        if(openAIhelp){
+          setOpenAIhelp(false)
+        } else {
+          setOpenAIhelp(true)
+        }
+      }},
     ]
 
   return (

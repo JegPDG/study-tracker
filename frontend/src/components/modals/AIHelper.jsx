@@ -96,7 +96,7 @@ const AIHelper = (props) => {
       <div className='flex items-center gap-2 w-full justify-between'>
         <div className='flex items-center space-x-2 '>
           <img className='size-8' src={logo.logo_1} alt="" />
-           <p>StudBud AI Helper</p>
+           <p className='font-medium'>StudBud AI Helper</p>
         </div>
 
         <div className=''>
@@ -116,7 +116,7 @@ const AIHelper = (props) => {
             setConversationThread([])
             setConversation(null)
           }}
-          className='bg-red-200 px-2 rounded-2xl border border-black/10 text-sm'>
+          className='bg-red-200 px-2 rounded-2xl border border-black/10 text-sm text-black/50'>
           New conversation?
         </button>
       </div>
@@ -127,19 +127,33 @@ const AIHelper = (props) => {
           <div className='flex flex-col items-center justify-center h-full slide-up'>
             {/* Conversations List  */}
             <div className='bg-white-1 p-6 w-full max-w-[80%] mx-auto rounded-2xl '>
-              <p className='gradient-purple-font'>Your Conversations</p>
               
-              <div className='mt-2 space-y-1 max-h-[300px] overflow-auto scrollbar-thin'>
-                {convolist?.map((convo,i) => {
-                  return(
-                    <p 
-                      key={i} 
-                      onClick={() => fetchConvoMessages(convo.id)}
-                      className='bg-white-2 py-2 px-4 w-full rounded-3xl text-sm select-none '>{convo.title}</p>
-                  )
-                })}
+              { convolist ? 
+              (
+                <>
+                  <p className='gradient-purple-font font-medium'> Sart a new Conversation!</p>
+                </>
 
-              </div>
+              )
+              :
+              (
+                <>
+                  <p className='gradient-purple-font'>Your Conversations</p>
+
+                  <div className='mt-2 space-y-1 max-h-[300px] overflow-auto scrollbar-thin'>
+                    {convolist?.map((convo,i) => {
+                      return(
+                        <p 
+                          key={i} 
+                          onClick={() => fetchConvoMessages(convo.id)}
+                          className='bg-white-2 py-2 px-4 w-full rounded-3xl text-sm select-none '>{convo.title}</p>
+                      )
+                    })}
+                  </div>
+                </>
+              )
+              }
+
               {/* <div className='flex w-full justify-between mt-2'>
                 <button><ArrowLeftCircleIcon className='size-8' fill='#86728B'></ArrowLeftCircleIcon></button>
                 <button><ArrowRightCircleIcon className='size-8' fill='#86728B'></ArrowRightCircleIcon></button>
